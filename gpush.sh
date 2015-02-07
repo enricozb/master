@@ -12,3 +12,4 @@ ls
 git add .
 git commit -m "$arg_1"
 git push -u origin master
+echo done
