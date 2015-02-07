@@ -10,14 +10,18 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
+	func testRequest() {
+		let session = Session(user: "enrico.borba.1", pass: "inferno&7")
+		session.login()
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		testRequest()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
 
 
