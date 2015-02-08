@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D9031A531A86EB7000C5C156 /* PSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A521A86EB7000C5C156 /* PSession.swift */; };
 		D9031A581A86F1A100C5C156 /* PISDWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A571A86F1A100C5C156 /* PISDWebView.swift */; };
+		D9031A5A1A86F3D200C5C156 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A591A86F3D200C5C156 /* Parser.swift */; };
+		D9031A5E1A870C2700C5C156 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A5D1A870C2700C5C156 /* File.swift */; };
+		D9031A631A870D0200C5C156 /* temp.txt in Resources */ = {isa = PBXBuildFile; fileRef = D9031A621A870D0200C5C156 /* temp.txt */; };
 		D99C186E1A86967600D68543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C186D1A86967600D68543 /* AppDelegate.swift */; };
 		D99C18701A86967600D68543 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C186F1A86967600D68543 /* FirstViewController.swift */; };
 		D99C18721A86967600D68543 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C18711A86967600D68543 /* SecondViewController.swift */; };
@@ -81,6 +84,9 @@
 /* Begin PBXFileReference section */
 		D9031A521A86EB7000C5C156 /* PSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSession.swift; sourceTree = "<group>"; };
 		D9031A571A86F1A100C5C156 /* PISDWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PISDWebView.swift; sourceTree = "<group>"; };
+		D9031A591A86F3D200C5C156 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D9031A5D1A870C2700C5C156 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D9031A621A870D0200C5C156 /* temp.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = temp.txt; sourceTree = "<group>"; };
 		D99C18681A86967600D68543 /* onePISD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onePISD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99C186C1A86967600D68543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D99C186D1A86967600D68543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,15 +143,18 @@
 			isa = PBXGroup;
 			children = (
 				D99C186D1A86967600D68543 /* AppDelegate.swift */,
-				D9031A521A86EB7000C5C156 /* PSession.swift */,
+				D9031A571A86F1A100C5C156 /* PISDWebView.swift */,
 				D99C18A51A86980200D68543 /* Session.swift */,
+				D9031A591A86F3D200C5C156 /* Parser.swift */,
+				D9031A621A870D0200C5C156 /* temp.txt */,
+				D9031A5D1A870C2700C5C156 /* File.swift */,
 				D99C186F1A86967600D68543 /* FirstViewController.swift */,
 				D99C18711A86967600D68543 /* SecondViewController.swift */,
 				D99C18731A86967600D68543 /* Main.storyboard */,
+				D9031A521A86EB7000C5C156 /* PSession.swift */,
 				D99C18761A86967600D68543 /* Images.xcassets */,
 				D99C18781A86967600D68543 /* LaunchScreen.xib */,
 				D99C186B1A86967600D68543 /* Supporting Files */,
-				D9031A571A86F1A100C5C156 /* PISDWebView.swift */,
 			);
 			path = onePISD;
 			sourceTree = "<group>";
@@ -305,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9031A631A870D0200C5C156 /* temp.txt in Resources */,
 				D99C18751A86967600D68543 /* Main.storyboard in Resources */,
 				D99C187A1A86967600D68543 /* LaunchScreen.xib in Resources */,
 				D99C18771A86967600D68543 /* Images.xcassets in Resources */,
@@ -330,7 +340,9 @@
 				D9031A531A86EB7000C5C156 /* PSession.swift in Sources */,
 				D99C186E1A86967600D68543 /* AppDelegate.swift in Sources */,
 				D99C18701A86967600D68543 /* FirstViewController.swift in Sources */,
+				D9031A5E1A870C2700C5C156 /* File.swift in Sources */,
 				D9031A581A86F1A100C5C156 /* PISDWebView.swift in Sources */,
+				D9031A5A1A86F3D200C5C156 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

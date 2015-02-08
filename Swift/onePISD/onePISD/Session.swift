@@ -8,10 +8,10 @@ class Session {
 	let username: String
 	let password: String
 	let sessionManager: Alamofire.Manager
-	
-	init(user: String, pass: String) {
-		self.username = user
-		self.password = pass
+	var last_Request : Request?
+	init(username: String, password: String) {
+		self.username = username
+		self.password = password
 		
 		var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
 		defaultHeaders["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
@@ -28,17 +28,29 @@ class Session {
 		configuration.HTTPAdditionalHeaders = defaultHeaders
 		
 		self.sessionManager = Alamofire.Manager(configuration: configuration)
+		load_login_page()
+	}
+	
+	func load_login_page() {
+		self.last_Request = self.sessionManager.request(NSURLRequest(URL: NSURL(string: "https://sso.portal.mypisd.net/cas/login")!))
 	}
 	
 	func login() {
-		let params = ["username" : self.username, "password" : self.password, "_eventId" : "submit"]
-		var a = sessionManager.request(NSURLRequest(URL: NSURL(string: "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin")!)).response
-		sessionManager.request(.POST, url_login, parameters: params)
-			.responseString	{ (request, response, data, error) in
-							println("request: \n \(request)")
-							println("response: \n \(response)")
-							println("error: \n \(error)")
-							println("data: \n \(data)")
-						}
+		
+		self.last_Request!.responseString { (_, _, string, _) in
+			let params = [
+				"username" : self.username,
+				"password" : self.password,
+				"warn" : "true",
+				"lt" : Parser.getlt(string!),
+				"_eventId" : "submit",
+				"reset" : "CLEAR",
+				"submit": "LOGIN"
+			]
+			self.last_Request = self.sessionManager.request(.POST, self.url_login, parameters: params)
+				.responseString { (_, response, data, _) in
+				print(response!)
+			}
+		}
 	}
 }

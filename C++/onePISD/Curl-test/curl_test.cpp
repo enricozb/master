@@ -33,8 +33,11 @@ int main() {
 	br.select_form(0);
 	*br.form["username"] = "enrico.borba.1";
 	*br.form["password"] = "inferno&7";
-	*br.form["lt"] = "_c239FACDF-97A6-7093-07A3-0685CBCCBC45_kA88BCBB1-3433-EBB7-1532-67AA9E702208";
+	*br.form["warn"] = "true";
+	*br.form["lt"] = "testing you fuckers";
 	*br.form["_eventId"] = "submit";
+	*br.form["reset"] = "CLEAR";
+	*br.form["submit"] = "LOGIN";
 	br.submit();
 	cout<<br.response();
 }

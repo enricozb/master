@@ -11,7 +11,7 @@ import UIKit
 class FirstViewController: UIViewController {
 
 	func testRequest() {
-		let session = PSession(username: "enrico.borba.1", password: "inferno&7")
+		let session = Session(username: "enrico.borba.1", password: "inferno&7")
 		session.login()
 	}
 	
