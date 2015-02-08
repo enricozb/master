@@ -8,6 +8,7 @@ then
 	read arg_1
 fi
 cd ~/Documents/SublimeFiles/master
+git rm -r --cache .
 git add .
 git commit -m "$arg_1"
 git push -u origin master
