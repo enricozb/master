@@ -66,11 +66,25 @@ class Session {
 			]
 			
 			self.last_Request = self.sessionManager.request(.POST, self.url_login, parameters: params)
-				.responseString { (_, response, data, _) in
-					var cook : NSHTTPCookie = self.cookies.cookiesForURL(NSURL(string: "https://sso.portal.mypisd.net/cas/")!)![1] as NSHTTPCookie
-					//print(cook.domain + cook.path!)
-					self.load_req_print("http://portal.mypisd.net/user/hid0112100000000000000076bb")
+				.responseString { (_, _, html_data, _) in
+					print(html_data!)
 			}
+			
+			/*
+			self.last_Request = self.sessionManager.request(.POST, self.url_login, parameters: params)
+				.responseString { (rese, _, data, _) in
+					var cookie : NSHTTPCookie = self.cookies.cookiesForURL(NSURL(string: "https://sso.portal.mypisd.net/cas/")!)![1] as NSHTTPCookie
+					//println(cookie)
+					
+					let session_only = "TRUE" //cookie.valueForKey("sessionOnly") as String!
+					let is_secure = "TRUE" //cookie.valueForKey("isSecure") as String!
+					self.sessionManager.session.configuration.HTTPAdditionalHeaders?[cookie.name] = "version=\(cookie.version); value=\(cookie.value!); sessionOnly=\(session_only)); domain=\(cookie.domain); path=\(cookie.path!); isSecure=\(is_secure))"
+					//print(self.sessionManager.session.configuration.HTTPAdditionalHeaders?)
+					self.sessionManager.request(.POST, "http://portal.mypisd.net/login").responseString { (request, response, string, _) in
+						print(response)
+					}
+			}
+			*/
 			
 			
 		}
