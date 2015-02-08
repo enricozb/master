@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D99C18671A86967600D68543"
-               BuildableName = "onePISD.app"
-               BlueprintName = "onePISD"
-               ReferencedContainer = "container:onePISD.xcodeproj">
+               BuildableName = "onePISD-Alamofire.app"
+               BlueprintName = "onePISD-Alamofire"
+               ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D99C187E1A86967600D68543"
-               BuildableName = "onePISDTests.xctest"
-               BlueprintName = "onePISDTests"
-               ReferencedContainer = "container:onePISD.xcodeproj">
+               BuildableName = "onePISD-AlamofireTests.xctest"
+               BlueprintName = "onePISD-AlamofireTests"
+               ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D99C187E1A86967600D68543"
-               BuildableName = "onePISDTests.xctest"
-               BlueprintName = "onePISDTests"
-               ReferencedContainer = "container:onePISD.xcodeproj">
+               BuildableName = "onePISD-AlamofireTests.xctest"
+               BlueprintName = "onePISD-AlamofireTests"
+               ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D99C18671A86967600D68543"
-            BuildableName = "onePISD.app"
-            BlueprintName = "onePISD"
-            ReferencedContainer = "container:onePISD.xcodeproj">
+            BuildableName = "onePISD-Alamofire.app"
+            BlueprintName = "onePISD-Alamofire"
+            ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D99C18671A86967600D68543"
-            BuildableName = "onePISD.app"
-            BlueprintName = "onePISD"
-            ReferencedContainer = "container:onePISD.xcodeproj">
+            BuildableName = "onePISD-Alamofire.app"
+            BlueprintName = "onePISD-Alamofire"
+            ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D99C18671A86967600D68543"
-            BuildableName = "onePISD.app"
-            BlueprintName = "onePISD"
-            ReferencedContainer = "container:onePISD.xcodeproj">
+            BuildableName = "onePISD-Alamofire.app"
+            BlueprintName = "onePISD-Alamofire"
+            ReferencedContainer = "container:onePISD-Alamofire.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

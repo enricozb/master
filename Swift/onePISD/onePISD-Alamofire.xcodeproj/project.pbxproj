@@ -85,7 +85,7 @@
 		D9031A571A86F1A100C5C156 /* PISDWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PISDWebView.swift; sourceTree = "<group>"; };
 		D9031A591A86F3D200C5C156 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		D9031A5D1A870C2700C5C156 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		D99C18681A86967600D68543 /* onePISD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onePISD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D99C18681A86967600D68543 /* onePISD-Alamofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onePISD-Alamofire.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99C186C1A86967600D68543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D99C186D1A86967600D68543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D99C186F1A86967600D68543 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		D99C18741A86967600D68543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D99C18761A86967600D68543 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D99C18791A86967600D68543 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		D99C187F1A86967600D68543 /* onePISDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = onePISDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D99C187F1A86967600D68543 /* onePISD-AlamofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "onePISD-AlamofireTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99C18841A86967600D68543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D99C18851A86967600D68543 /* onePISDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onePISDTests.swift; sourceTree = "<group>"; };
 		D99C188F1A8696B000D68543 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 		D99C18691A86967600D68543 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D99C18681A86967600D68543 /* onePISD.app */,
-				D99C187F1A86967600D68543 /* onePISDTests.xctest */,
+				D99C18681A86967600D68543 /* onePISD-Alamofire.app */,
+				D99C187F1A86967600D68543 /* onePISD-AlamofireTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,9 +195,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D99C18671A86967600D68543 /* onePISD */ = {
+		D99C18671A86967600D68543 /* onePISD-Alamofire */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D99C18891A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD" */;
+			buildConfigurationList = D99C18891A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD-Alamofire" */;
 			buildPhases = (
 				D99C18641A86967600D68543 /* Sources */,
 				D99C18651A86967600D68543 /* Frameworks */,
@@ -209,14 +209,14 @@
 			dependencies = (
 				D99C18A21A8697A600D68543 /* PBXTargetDependency */,
 			);
-			name = onePISD;
+			name = "onePISD-Alamofire";
 			productName = onePISD;
-			productReference = D99C18681A86967600D68543 /* onePISD.app */;
+			productReference = D99C18681A86967600D68543 /* onePISD-Alamofire.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D99C187E1A86967600D68543 /* onePISDTests */ = {
+		D99C187E1A86967600D68543 /* onePISD-AlamofireTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D99C188C1A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISDTests" */;
+			buildConfigurationList = D99C188C1A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD-AlamofireTests" */;
 			buildPhases = (
 				D99C187B1A86967600D68543 /* Sources */,
 				D99C187C1A86967600D68543 /* Frameworks */,
@@ -227,9 +227,9 @@
 			dependencies = (
 				D99C18811A86967600D68543 /* PBXTargetDependency */,
 			);
-			name = onePISDTests;
+			name = "onePISD-AlamofireTests";
 			productName = onePISDTests;
-			productReference = D99C187F1A86967600D68543 /* onePISDTests.xctest */;
+			productReference = D99C187F1A86967600D68543 /* onePISD-AlamofireTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -250,7 +250,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D99C18631A86967600D68543 /* Build configuration list for PBXProject "onePISD" */;
+			buildConfigurationList = D99C18631A86967600D68543 /* Build configuration list for PBXProject "onePISD-Alamofire" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -269,8 +269,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				D99C18671A86967600D68543 /* onePISD */,
-				D99C187E1A86967600D68543 /* onePISDTests */,
+				D99C18671A86967600D68543 /* onePISD-Alamofire */,
+				D99C187E1A86967600D68543 /* onePISD-AlamofireTests */,
 			);
 		};
 /* End PBXProject section */
@@ -355,7 +355,7 @@
 /* Begin PBXTargetDependency section */
 		D99C18811A86967600D68543 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D99C18671A86967600D68543 /* onePISD */;
+			target = D99C18671A86967600D68543 /* onePISD-Alamofire */;
 			targetProxy = D99C18801A86967600D68543 /* PBXContainerItemProxy */;
 		};
 		D99C18A21A8697A600D68543 /* PBXTargetDependency */ = {
@@ -469,7 +469,7 @@
 				INFOPLIST_FILE = onePISD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "onePISD-Alamofire";
 			};
 			name = Debug;
 		};
@@ -480,7 +480,7 @@
 				INFOPLIST_FILE = onePISD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "onePISD-Alamofire";
 			};
 			name = Release;
 		};
@@ -498,7 +498,7 @@
 				);
 				INFOPLIST_FILE = onePISDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "onePISD-AlamofireTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/onePISD.app/onePISD";
 			};
 			name = Debug;
@@ -513,7 +513,7 @@
 				);
 				INFOPLIST_FILE = onePISDTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "onePISD-AlamofireTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/onePISD.app/onePISD";
 			};
 			name = Release;
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D99C18631A86967600D68543 /* Build configuration list for PBXProject "onePISD" */ = {
+		D99C18631A86967600D68543 /* Build configuration list for PBXProject "onePISD-Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D99C18871A86967600D68543 /* Debug */,
@@ -530,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D99C18891A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD" */ = {
+		D99C18891A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD-Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D99C188A1A86967600D68543 /* Debug */,
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D99C188C1A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISDTests" */ = {
+		D99C188C1A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISD-AlamofireTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D99C188D1A86967600D68543 /* Debug */,

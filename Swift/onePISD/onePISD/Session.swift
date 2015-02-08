@@ -4,7 +4,7 @@ import Alamofire
 class Session {
 	
 	let url_login = "https://sso.portal.mypisd.net/cas/login"
-	let url_user = "http://portal.mypisd.net/user/"
+	let url_user = "http://portal.mypisd.net/user/hid0112100000000000000076bb"
 	
 	let username: String
 	let password: String
@@ -65,9 +65,22 @@ class Session {
 				"submit": "LOGIN"
 			]
 			
+			
 			self.last_Request = self.sessionManager.request(.POST, self.url_login, parameters: params)
-				.responseString { (_, _, html_data, _) in
-					print(html_data!)
+				.responseString { (_, response, html_data, _) in
+					for i in 0...2 {
+						var cookie : NSHTTPCookie = self.cookies.cookiesForURL(NSURL(string: "https://sso.portal.mypisd.net/cas/")!)![i] as NSHTTPCookie
+						//println(cookie)
+						self.sessionManager.session.configuration.HTTPAdditionalHeaders?[cookie.name] = "version=\(cookie.version); value=\(cookie.value!); sessionOnly=TRUE; domain=\(cookie.domain); path=\(cookie.path!); isSecure=TRUE"
+					}
+					//println("HEADERS")
+					//println(self.sessionManager.session.configuration.HTTPAdditionalHeaders!)
+					println("Redirecting...")
+					self.last_Request = self.sessionManager.request(NSURLRequest(URL: NSURL(string: self.url_user)!)).responseString { (_,_,data,_) in
+						println("DATA")
+						println(data!)
+					}
+					
 			}
 			
 			/*
