@@ -22,7 +22,7 @@
 		<key>26D2920D3995FC88B8AB1E67D07B1EB82ACC4995</key>
 		<string>../../../..</string>
 		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
-		<string>../../../..Swift/Alamofire/</string>
+		<string>../../../..Swift/Alamofire</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/enricozb/master.git</string>

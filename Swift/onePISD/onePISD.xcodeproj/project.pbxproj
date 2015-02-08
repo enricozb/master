@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9031A531A86EB7000C5C156 /* PSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A521A86EB7000C5C156 /* PSession.swift */; };
+		D9031A581A86F1A100C5C156 /* PISDWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9031A571A86F1A100C5C156 /* PISDWebView.swift */; };
 		D99C186E1A86967600D68543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C186D1A86967600D68543 /* AppDelegate.swift */; };
 		D99C18701A86967600D68543 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C186F1A86967600D68543 /* FirstViewController.swift */; };
 		D99C18721A86967600D68543 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99C18711A86967600D68543 /* SecondViewController.swift */; };
@@ -77,6 +79,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D9031A521A86EB7000C5C156 /* PSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PSession.swift; sourceTree = "<group>"; };
+		D9031A571A86F1A100C5C156 /* PISDWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PISDWebView.swift; sourceTree = "<group>"; };
 		D99C18681A86967600D68543 /* onePISD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onePISD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D99C186C1A86967600D68543 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D99C186D1A86967600D68543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				D99C186D1A86967600D68543 /* AppDelegate.swift */,
+				D9031A521A86EB7000C5C156 /* PSession.swift */,
 				D99C18A51A86980200D68543 /* Session.swift */,
 				D99C186F1A86967600D68543 /* FirstViewController.swift */,
 				D99C18711A86967600D68543 /* SecondViewController.swift */,
@@ -140,6 +145,7 @@
 				D99C18761A86967600D68543 /* Images.xcassets */,
 				D99C18781A86967600D68543 /* LaunchScreen.xib */,
 				D99C186B1A86967600D68543 /* Supporting Files */,
+				D9031A571A86F1A100C5C156 /* PISDWebView.swift */,
 			);
 			path = onePISD;
 			sourceTree = "<group>";
@@ -321,8 +327,10 @@
 			files = (
 				D99C18A61A86980200D68543 /* Session.swift in Sources */,
 				D99C18721A86967600D68543 /* SecondViewController.swift in Sources */,
+				D9031A531A86EB7000C5C156 /* PSession.swift in Sources */,
 				D99C186E1A86967600D68543 /* AppDelegate.swift in Sources */,
 				D99C18701A86967600D68543 /* FirstViewController.swift in Sources */,
+				D9031A581A86F1A100C5C156 /* PISDWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +529,7 @@
 				D99C188B1A86967600D68543 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D99C188C1A86967600D68543 /* Build configuration list for PBXNativeTarget "onePISDTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +538,7 @@
 				D99C188E1A86967600D68543 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
