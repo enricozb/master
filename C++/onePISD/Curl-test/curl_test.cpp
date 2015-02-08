@@ -22,12 +22,12 @@ void initbr(Browser* br) {
 	headers["Referer"] = "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin";
 	br->addheaders(headers);
 
-	br->open("https://sso.portal.mypisd.net/cas/login");
+	br->open("https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin");
 }
 
 string getlt(string html) {
 	int start = html.find("\"_c") + 1;
-	string s = html.substr(start, 76);
+	string s = html.substr(start, 77);
 	//cout << html.substr(start, 77) << endl;
 	return s;
 }
@@ -39,13 +39,10 @@ int main() {
 	br.select_form(0);
 	*br.form["username"] = "enrico.borba.1";
 	*br.form["password"] = "inferno&7";
-	/*
 	*br.form["warn"] = "true";
-	*br.form["lt"] = getlt(br.response());
-	*br.form["_eventId"] = "submit";
 	*br.form["reset"] = "CLEAR";
 	*br.form["submit"] = "LOGIN";
-	//cout << br.form;*/
+	//cout << br.form;
 	br.submit();
 	cout<<br.response();
 }
