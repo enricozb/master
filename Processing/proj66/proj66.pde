@@ -1,13 +1,45 @@
 import java.util.*;
 
-public class Tree {
+void setup() {
+	size(500,500,OPENGL);
+}
+
+void draw() {
+	
+}
+
+class Node {
+	Node pnode;
+	String pedge;
+	Map<String, Node> children;
+	boolean value;
+
+	Node() {
+		this.pnode = null;
+		this.pedge = null;
+		this.children = new TreeMap<String, Node>();
+		this.value = false;
+	}	
+
+	public Node(Node pnode, String pedge, Map<String, Node> children, boolean value) {
+		this.pnode = pnode;
+		this.pedge = pedge;
+		if(children == null)
+			this.children = new TreeMap<String, Node>();
+		else
+			this.children = children;
+		this.value = value;
+	}
+};
+
+class Tree {
 	Node root;
 
-	public Tree() {
+	Tree() {
 		root = new Node();
 	}
 
-	public void add(String s) {
+	void add(String s) {
 		Node t = root;
 		int c = 0;
 		A: while(c < t.children.size() && s.length() > 0) {
@@ -49,24 +81,4 @@ public class Tree {
 		else
 			t.children.put(s, new Node(t, s, null, true));
 	}
-
-	public String toString() {
-		return toString(root, "");
-	}
-
-	public String toString(Node n, String off) {
-		String s = "[" + off;
-		int size = n.children.size();
-		int i = 0;
-		for(String e : n.children.keySet()) {
-			String comma = (i == size - 1 ? "" : ", ");
-			s += e + toString(n.children.get(e), off) + comma;
-			i++;
-		}
-		s += "]";
-		if(i == 0)
-			return "[]";
-		return s;
-	}
-
 }
