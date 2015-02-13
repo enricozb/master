@@ -1,11 +1,16 @@
 import java.util.*;
 
+Tree t = new Tree();
+
 void setup() {
 	size(500,500,OPENGL);
+	noStroke();
+	fill(255);
+	t.add("banana");
 }
 
 void draw() {
-	
+	background(0);
 }
 
 class Node {
@@ -14,6 +19,8 @@ class Node {
 	Map<String, Node> children;
 	boolean value;
 
+	float x, y;
+
 	Node() {
 		this.pnode = null;
 		this.pedge = null;
@@ -21,7 +28,7 @@ class Node {
 		this.value = false;
 	}	
 
-	public Node(Node pnode, String pedge, Map<String, Node> children, boolean value) {
+	Node(Node pnode, String pedge, Map<String, Node> children, boolean value) {
 		this.pnode = pnode;
 		this.pedge = pedge;
 		if(children == null)
@@ -29,6 +36,10 @@ class Node {
 		else
 			this.children = children;
 		this.value = value;
+	}
+
+	void draw() {
+		ellipse(x, y, 5, 5);
 	}
 };
 
@@ -81,4 +92,62 @@ class Tree {
 		else
 			t.children.put(s, new Node(t, s, null, true));
 	}
-}
+};
+
+class GNode {
+	Node n;
+	ArrayList<GEdge> childrenEdges;
+	GEdge parentEdge;
+	PVector loc;
+	PVector acc;
+	boolean fixed;
+	GNode(Node n, boolean fixed) {
+		this.n = n;
+		loc = new PVector(0, 0);
+		acc = new PVector(0, 0);
+		this.fixed = fixed;
+	}
+
+	GNode(Node n) {
+		this(n, false);
+	}
+
+	void setLoc(float x, float y) {
+		this.loc.x = x;
+		this.loc.y = y;
+	}
+
+	void addEdge(GEdge ge) {
+		childrenEdges.add(ge);
+	}	
+};
+
+class GEdge {
+	String s;
+	Node a;
+	Node b;
+	GEdge(Node a, Node b) {
+		this.a = a;
+		this.b = b;
+	}
+};
+
+class GTree {
+	Tree t;
+	ArrayList<GNode> nodes;
+	ArrayList<GEdge> edges;
+	GTree(Tree t) {
+		this.t = t;
+		this.nodes = new ArrayList<GNode>();
+		this.edges = new ArrayList<GEdge>();
+	}
+
+	void make(Tree t) {
+		Node r = t.root;
+		GNode gr = new GNode(r, true);
+		//gr.setLoc();
+		while(r.children.size() != 0) {
+
+		}
+	}
+};
