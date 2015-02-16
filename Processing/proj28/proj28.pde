@@ -108,7 +108,7 @@ class Player
 		fill(255);
 		rect(x,y,20,20);
 	}
-}
+};
 
 class Enemy
 {

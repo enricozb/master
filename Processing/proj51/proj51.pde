@@ -27,13 +27,13 @@ void draw()
 	background(35);
 	translate(width/2, height/2, -width/2);
 
-	rotateX(x);
-	rotateY(y);
-	rotateZ(z);
+	//rotateX(x);
+	//rotateY(y);
+	//rotateZ(z);
 
-	x = 2 * PI * noise(t);
-	y = 2 * PI * noise(t * 2);
-	z = 2 * PI * noise(t + 100);
+	//x = 2 * PI * noise(t);
+	//y = 2 * PI * noise(t * 2);
+	//z = 2 * PI * noise(t + 100);
 	for(int i = 0; i < particles.size(); i++)
 	{
 		particles.get(i).draw();
@@ -131,7 +131,7 @@ class Particle
 		pushMatrix();
 		translate(pos.x, pos.y, pos.z);
 		//ellipse(0,0,sphereRadius,sphereRadius);
-		sphere(radius);
+		sphere(6);
 		popMatrix();
 	}
 }

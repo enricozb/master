@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D910DC041A8E8D9600A9E862 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D910DC031A8E8D9600A9E862 /* Browser.swift */; };
 		D9E49A6F1A8D05CF00400B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A6E1A8D05CF00400B0D /* AppDelegate.swift */; };
 		D9E49A711A8D05CF00400B0D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A701A8D05CF00400B0D /* FirstViewController.swift */; };
 		D9E49A731A8D05CF00400B0D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A721A8D05CF00400B0D /* SecondViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D910DC031A8E8D9600A9E862 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
 		D9E49A691A8D05CF00400B0D /* onePISD-NSURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onePISD-NSURL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E49A6D1A8D05CF00400B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E49A6E1A8D05CF00400B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D9E49A771A8D05CF00400B0D /* Images.xcassets */,
 				D9E49A791A8D05CF00400B0D /* LaunchScreen.xib */,
 				D9E49A6C1A8D05CF00400B0D /* Supporting Files */,
+				D910DC031A8E8D9600A9E862 /* Browser.swift */,
 			);
 			path = "onePISD-NSURL";
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D910DC041A8E8D9600A9E862 /* Browser.swift in Sources */,
 				D9E49A911A8D0B4F00400B0D /* Session.swift in Sources */,
 				D9E49A731A8D05CF00400B0D /* SecondViewController.swift in Sources */,
 				D9E49A6F1A8D05CF00400B0D /* AppDelegate.swift in Sources */,
@@ -413,6 +417,7 @@
 				D9E49A8C1A8D05CF00400B0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9E49A8D1A8D05CF00400B0D /* Build configuration list for PBXNativeTarget "onePISD-NSURLTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				D9E49A8F1A8D05CF00400B0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
