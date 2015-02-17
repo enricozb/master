@@ -23,14 +23,27 @@ class Session {
 		form = [String : String]()
 	}
 	
-	func submit() {
+	func login() {
+		
+		let params = [
+			"username" : self.username,
+			"password" : self.password,
+			"warn" : "true",
+			//"lt" : Parser.getlt(string!),
+			"_eventId" : "submit",
+			"reset" : "CLEAR",
+			"submit": "LOGIN"
+			
+		]
 		
 	}
 	
-	func setHeaders(params: [String : String]) {
+	
+	private func setHeaders(params: [String : String]) {
 		for (key, val) in params {
 			session.configuration.HTTPAdditionalHeaders![key] = val;
 		}
 	}
+	
 	
 }

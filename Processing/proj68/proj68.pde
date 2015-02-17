@@ -43,7 +43,7 @@ void water(float t) {
 	beginShape();
 	vertex(0, height);
 	for(int i = 0; i < width; i++) {
-		vertex(i, height/1.5f + sin(i/50f + t));
+		vertex(i, height/1.5f + 2 * sin(i/50f + t));
 	}
 	vertex(width, height);
 	endShape();
