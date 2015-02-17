@@ -12,4 +12,3 @@ git rm -r --cache .
 git add .
 git commit -m "$arg_1"
 git push -u origin master
-echo done
