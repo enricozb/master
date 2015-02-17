@@ -13,6 +13,7 @@ class Browser {
 	private let session : NSURLSession
 	private let request : NSMutableURLRequest
 	private var err		: NSError?
+	
 	init(url : String) {
 		self.session = NSURLSession.sharedSession()
 		self.request = NSMutableURLRequest(URL: NSURL(string: url)!)
@@ -30,5 +31,11 @@ class Browser {
 	
 	func set_params(params: [String: String]) {
 		self.request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+	}
+	
+	func submit() {
+		let task = self.session.dataTaskWithRequest(self.request)
+		task.resume()
+		println(task.response)
 	}
 }

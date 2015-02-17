@@ -84,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				D9E49A6E1A8D05CF00400B0D /* AppDelegate.swift */,
+				D910DC031A8E8D9600A9E862 /* Browser.swift */,
 				D9E49A701A8D05CF00400B0D /* FirstViewController.swift */,
 				D9E49A721A8D05CF00400B0D /* SecondViewController.swift */,
 				D9E49A901A8D0B4F00400B0D /* Session.swift */,
@@ -91,7 +92,6 @@
 				D9E49A771A8D05CF00400B0D /* Images.xcassets */,
 				D9E49A791A8D05CF00400B0D /* LaunchScreen.xib */,
 				D9E49A6C1A8D05CF00400B0D /* Supporting Files */,
-				D910DC031A8E8D9600A9E862 /* Browser.swift */,
 			);
 			path = "onePISD-NSURL";
 			sourceTree = "<group>";
