@@ -12,9 +12,9 @@ class FirstViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		var br = Browser(url : "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin")
-		br.set_method("POST")
-		br.submit()
+		
+		var session = PISDSession(username: "enrico.borba.1@mypisd.net", password: "inferno&7")
+		session.login()
 	}
 
 	override func didReceiveMemoryWarning() {

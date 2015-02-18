@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D910DC041A8E8D9600A9E862 /* Browser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D910DC031A8E8D9600A9E862 /* Browser.swift */; };
+		D9ACE5751A9543200022A5DA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ACE5741A9543200022A5DA /* Session.swift */; };
 		D9E49A6F1A8D05CF00400B0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A6E1A8D05CF00400B0D /* AppDelegate.swift */; };
 		D9E49A711A8D05CF00400B0D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A701A8D05CF00400B0D /* FirstViewController.swift */; };
 		D9E49A731A8D05CF00400B0D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A721A8D05CF00400B0D /* SecondViewController.swift */; };
@@ -15,7 +16,7 @@
 		D9E49A781A8D05CF00400B0D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9E49A771A8D05CF00400B0D /* Images.xcassets */; };
 		D9E49A7B1A8D05CF00400B0D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9E49A791A8D05CF00400B0D /* LaunchScreen.xib */; };
 		D9E49A871A8D05CF00400B0D /* onePISD_NSURLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A861A8D05CF00400B0D /* onePISD_NSURLTests.swift */; };
-		D9E49A911A8D0B4F00400B0D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A901A8D0B4F00400B0D /* Session.swift */; };
+		D9E49A911A8D0B4F00400B0D /* PISDSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E49A901A8D0B4F00400B0D /* PISDSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		D910DC031A8E8D9600A9E862 /* Browser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Browser.swift; sourceTree = "<group>"; };
+		D9ACE5741A9543200022A5DA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D9E49A691A8D05CF00400B0D /* onePISD-NSURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onePISD-NSURL.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E49A6D1A8D05CF00400B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E49A6E1A8D05CF00400B0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +43,7 @@
 		D9E49A801A8D05CF00400B0D /* onePISD-NSURLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "onePISD-NSURLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E49A851A8D05CF00400B0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9E49A861A8D05CF00400B0D /* onePISD_NSURLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onePISD_NSURLTests.swift; sourceTree = "<group>"; };
-		D9E49A901A8D0B4F00400B0D /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		D9E49A901A8D0B4F00400B0D /* PISDSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PISDSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +89,12 @@
 				D910DC031A8E8D9600A9E862 /* Browser.swift */,
 				D9E49A701A8D05CF00400B0D /* FirstViewController.swift */,
 				D9E49A721A8D05CF00400B0D /* SecondViewController.swift */,
-				D9E49A901A8D0B4F00400B0D /* Session.swift */,
+				D9E49A901A8D0B4F00400B0D /* PISDSession.swift */,
 				D9E49A741A8D05CF00400B0D /* Main.storyboard */,
 				D9E49A771A8D05CF00400B0D /* Images.xcassets */,
 				D9E49A791A8D05CF00400B0D /* LaunchScreen.xib */,
 				D9E49A6C1A8D05CF00400B0D /* Supporting Files */,
+				D9ACE5741A9543200022A5DA /* Session.swift */,
 			);
 			path = "onePISD-NSURL";
 			sourceTree = "<group>";
@@ -222,7 +225,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D910DC041A8E8D9600A9E862 /* Browser.swift in Sources */,
-				D9E49A911A8D0B4F00400B0D /* Session.swift in Sources */,
+				D9E49A911A8D0B4F00400B0D /* PISDSession.swift in Sources */,
+				D9ACE5751A9543200022A5DA /* Session.swift in Sources */,
 				D9E49A731A8D05CF00400B0D /* SecondViewController.swift in Sources */,
 				D9E49A6F1A8D05CF00400B0D /* AppDelegate.swift in Sources */,
 				D9E49A711A8D05CF00400B0D /* FirstViewController.swift in Sources */,
