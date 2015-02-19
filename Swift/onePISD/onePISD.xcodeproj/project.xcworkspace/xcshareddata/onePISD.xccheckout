@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C155B0A6-9CFB-49FF-B9DC-5C11292AC0BD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>onePISD</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>26D2920D3995FC88B8AB1E67D07B1EB82ACC4995</key>
+		<string>https://github.com/enricozb/master.git</string>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>https://github.com/Alamofire/Alamofire.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Swift/onePISD/onePISD.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>26D2920D3995FC88B8AB1E67D07B1EB82ACC4995</key>
+		<string>../../../..</string>
+		<key>67620B5EFA902936DF04070AF595B76AB0333747</key>
+		<string>../../../..Swift/Alamofire/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/enricozb/master.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>26D2920D3995FC88B8AB1E67D07B1EB82ACC4995</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>67620B5EFA902936DF04070AF595B76AB0333747</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Alamofire</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>26D2920D3995FC88B8AB1E67D07B1EB82ACC4995</string>
+			<key>IDESourceControlWCCName</key>
+			<string>master</string>
+		</dict>
+	</array>
+</dict>
+</plist>

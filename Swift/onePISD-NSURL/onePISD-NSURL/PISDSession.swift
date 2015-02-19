@@ -9,7 +9,7 @@
 import Foundation
 
 class PISDSession {
-	let url_login = "https://sso.portal.mypisd.net/cas/login?"
+	let url_login = "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin"
 	
 	let username: String
 	let password: String
@@ -27,7 +27,7 @@ class PISDSession {
 		var login_load_responseHTML = ""
 		var login_load_done = false
 		
-		let login_load_task = self.session.dataTaskWithURL(url) {(data, response, error) in
+		let login_load_task = self.session.dataTaskWithURL(url) { (data, response, error) in
 			login_load_responseHTML = NSString(data: data, encoding: NSUTF8StringEncoding)!
 			login_load_done = true
 		}
@@ -54,32 +54,23 @@ class PISDSession {
 		var err: NSError?
 		
 		login_request.HTTPMethod = "POST"
-		login_request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.allZeros, error: &err)!
+		login_request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.allZeros, error: nil)!
 		
-		
-		/*/*
 		let headers = [
-			"Accept"			: "text/html,application/xhtml+xml,application/json;q=0.9,*/*;q=0.8",
+			"Accept"			: "application/json",
 			"Accept-Encoding"	: "gzip,deflate,sdch",
 			"Accept-Language"	: "en-US,en;q=0.8,es;q=0.6",
 			"Cache-Control"		: "max-age=0",
 			"Connection"		: "keep-alive",
-			"Content-Type"		: "application/x-www-form-urlencoded, application/json",
+			"Content-Type"		: "application/json",
 			"Host"				: "sso.portal.mypisd.net",
 			"Origin"			: "https://sso.portal.mypisd.net",
 			"Referer"			: "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin"
-		]
-		*/
-		
-		let headers = [
-			"Content-Type" : "application/json; charset=utf-8"
-		
 		]
 		
 		for (header, val) in headers {
 			login_request.setValue(val, forHTTPHeaderField: header)
 		}
-		
 		var login_task = self.session.dataTaskWithRequest(login_request) { data, response, error -> Void in
 			println(response)
 			println(NSString(data: data, encoding: NSUTF8StringEncoding)!)
