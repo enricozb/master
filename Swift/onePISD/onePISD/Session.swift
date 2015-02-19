@@ -9,6 +9,10 @@
 import Foundation
 import Alamofire
 
+/* TODO
+	add storage mechanism for other fields
+	rewrite.
+*/
 
 class Session {
 	
@@ -25,7 +29,7 @@ class Session {
 	var grade_form: [String: String]?
 	var pinnacle_form: [String: String]?
 	
-	var studentId: String? //Can be grabbed after one of the first few logins
+	var studentId: String? //Not used yet, but can be found in the first few logins.
 	
 	init(username: String, password: String) {
 		self.username = username
@@ -93,6 +97,7 @@ class Session {
 	}
 	
 	private func loadMainGradePage(completionHandler: (NSHTTPURLResponse, NSString) -> ()) {
+		println("Loading main grade page")
 		self.manager.request(.POST, url_pinnacle, parameters: pinnacle_form!).responseString { (_, response, html_data, _) in
 			completionHandler(response!, html_data!)
 		}

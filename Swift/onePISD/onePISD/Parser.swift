@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Enrico Borba. All rights reserved.
 //
 
+/* TODO
+	inout parameters for _form_ functions
+	rewrite some shit
+*/
 import Foundation
 
 class Parser {
