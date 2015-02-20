@@ -84,28 +84,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginTextField.png" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-dQ-Yxu">
-                                <rect key="frame" x="33" y="241" width="255" height="85"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginTextFieldFilled.png" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-dQ-Yxu">
+                                <rect key="frame" x="33" y="151" width="255" height="85"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="o0Y-O9-64M">
-                                <rect key="frame" x="41" y="248" width="247" height="30"/>
+                                <rect key="frame" x="41" y="158" width="241" height="30"/>
+                                <color key="textColor" red="0.18823529411764706" green="0.22352941176470587" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1X9-DB-E9z">
-                                <rect key="frame" x="41" y="289" width="247" height="30"/>
+                                <rect key="frame" x="41" y="199" width="241" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJQ-DD-ItX" customClass="LoginButton">
-                                <rect key="frame" x="88" y="369" width="145" height="56.5"/>
-                                <state key="normal" title="Button">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJQ-DD-ItX">
+                                <rect key="frame" x="88" y="283" width="145" height="56"/>
+                                <state key="normal" title="Button" image="LoginButton.png" backgroundImage="LoginButtonPressed.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="selected" image="LoginButtonPressed.png"/>
+                                <state key="highlighted" image="LoginButtonPressed.png"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="e8F-6j-96A" eventType="touchUpInside" id="LDw-mP-edM"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LoginTextFieldFilled.png" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-Fj-hqf">
+                                <rect key="frame" x="33" y="151" width="255" height="85"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yi-b6y">
+                                <rect key="frame" x="41" y="199" width="241" height="30"/>
+                                <color key="textColor" red="0.18823529411764706" green="0.22352941176470587" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="tRs-j5-DOw">
+                                <rect key="frame" x="41" y="158" width="241" height="30"/>
+                                <color key="textColor" red="0.18823529411764706" green="0.22352941176470587" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="ERn-yi-b6y" id="Bh0-gy-mdA"/>
+                        <outlet property="usernameTextField" destination="tRs-j5-DOw" id="4Ga-5B-yK1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68u-hd-w7g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,7 +157,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoginTextField.png" width="600" height="200"/>
+        <image name="LoginButton.png" width="290" height="113"/>
+        <image name="LoginButtonPressed.png" width="290" height="113"/>
+        <image name="LoginTextFieldFilled.png" width="600" height="200"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

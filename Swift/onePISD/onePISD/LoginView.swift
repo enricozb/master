@@ -10,8 +10,16 @@ import UIKit
 
 class LoginView : UIViewController {
 	
+	@IBOutlet weak var usernameTextField: UITextField!
+	@IBOutlet weak var passwordTextField: UITextField!
+
+	@IBAction func loginButtonPressed(sender: UIButton) {
+		println(usernameTextField.text)
+		println(passwordTextField.text)
+	}
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.view.backgroundColor = UIColor(red: 0.290196078, green: 0.392156863, blue: 0.568627451, alpha: 1)
 	}
 	
 	override func didReceiveMemoryWarning() {
