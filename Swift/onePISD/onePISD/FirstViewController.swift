@@ -17,20 +17,12 @@ class FirstViewController: UIViewController {
 		session.getSixWeekGrades { (response, html_data) in
 			//println(response)
 			println(html_data)
-			self.loadNextView()
 		}
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
-	}
-	
-	func loadNextView() {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let vc = storyboard.instantiateViewControllerWithIdentifier(Storyboard.Login) as UIViewController
-		
-		self.presentViewController(vc, animated: false, completion: nil)
 	}
 
 }

@@ -11,6 +11,7 @@ import Alamofire
 
 /* TODO
 	add storage mechanism for other fields
+	error handling (no connection, wrong password, etc)
 	rewrite.
 */
 
@@ -46,6 +47,7 @@ class Session {
 		println("Attempting login")
 		
 		self.manager.request(.GET, url_login).responseString { (_, response, string, _) in
+			println(response)
 			self.loginWithParams(string!, completionHandler: completionHandler)
 		}
 	}
@@ -66,6 +68,10 @@ class Session {
 		]
 		
 		self.manager.request(.POST, url_login, parameters: params).responseString { (_, response, string, _) in
+			
+			//PARSE RESPONSE HERE TO CHECK FOR WRONG PASSWORD
+			
+			println(response)
 			self.loadMainPage(completionHandler)
 		}
 	}
@@ -74,6 +80,7 @@ class Session {
 		println("Loading grade pages")
 		
 		self.manager.request(.GET, url_user).responseString { (_, response, html_data, _) in
+			println(response)
 			let url_redirect = Parser.getRedirectfromHTML(html_data!)
 			self.grabGradeFormWithURL(url_redirect, completionHandler)
 		}
@@ -83,6 +90,7 @@ class Session {
 		println("Grabbing gradebook form from \(url)")
 		
 		self.manager.request(.GET, url).responseString { (_, response, html_data, _) in
+			println(response)
 			self.grade_form = Parser.getGradeFormFromHTML(html_data!)
 			self.submitGradeForm(completionHandler)
 		}
@@ -91,6 +99,7 @@ class Session {
 	private func submitGradeForm(completionHandler: (NSHTTPURLResponse, NSString) -> ()) {
 		println("Submitting grade form")
 		self.manager.request(.GET, url_grades, parameters: grade_form!).responseString { (_, response, html_data, _) in
+			println(response)
 			self.pinnacle_form = Parser.getPinnacleFormFromHTML(html_data!)
 			self.loadMainGradePage(completionHandler)
 		}
