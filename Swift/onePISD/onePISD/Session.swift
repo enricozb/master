@@ -51,7 +51,7 @@ class Session {
 	}
 	
 	private func loginWithParams(html: String, completionHandler: (NSHTTPURLResponse, NSString) -> ()) {
-		println("Setting login paramters")
+		println("Sending login request with parameters")
 		
 		let lt = Parser.getLTfromHTML(html)
 		

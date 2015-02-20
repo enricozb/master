@@ -17,6 +17,9 @@
 		D955E4741A9585050009D94A /* Alamofire.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D955E46A1A9584D60009D94A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D955E4761A9585190009D94A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E4751A9585190009D94A /* Session.swift */; };
 		D955E4781A958CAF0009D94A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E4771A958CAF0009D94A /* Parser.swift */; };
+		D955E47B1A96C7770009D94A /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E47A1A96C7770009D94A /* LoginView.swift */; };
+		D955E47E1A96C8DE0009D94A /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E47D1A96C8DE0009D94A /* ViewConstants.swift */; };
+		D9B810F51A96D55400171229 /* LoginTextField.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B810F41A96D55400171229 /* LoginTextField.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +96,9 @@
 		D955E4621A9584D60009D94A /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		D955E4751A9585190009D94A /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D955E4771A958CAF0009D94A /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		D955E47A1A96C7770009D94A /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D955E47D1A96C8DE0009D94A /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		D9B810F41A96D55400171229 /* LoginTextField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginTextField.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 		D955E4371A9584A50009D94A /* onePISD */ = {
 			isa = PBXGroup;
 			children = (
+				D955E47C1A96C77B0009D94A /* ViewControllers */,
 				D955E4791A95AFFC0009D94A /* backend */,
 				D955E43A1A9584A50009D94A /* AppDelegate.swift */,
 				D955E43C1A9584A50009D94A /* FirstViewController.swift */,
@@ -150,6 +157,7 @@
 		D955E4381A9584A50009D94A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D9B810F41A96D55400171229 /* LoginTextField.png */,
 				D955E4391A9584A50009D94A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -190,6 +198,15 @@
 				D955E4771A958CAF0009D94A /* Parser.swift */,
 			);
 			name = backend;
+			sourceTree = "<group>";
+		};
+		D955E47C1A96C77B0009D94A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D955E47A1A96C7770009D94A /* LoginView.swift */,
+				D955E47D1A96C8DE0009D94A /* ViewConstants.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +331,7 @@
 				D955E4421A9584A50009D94A /* Main.storyboard in Resources */,
 				D955E4471A9584A50009D94A /* LaunchScreen.xib in Resources */,
 				D955E4441A9584A50009D94A /* Images.xcassets in Resources */,
+				D9B810F51A96D55400171229 /* LoginTextField.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +351,9 @@
 			files = (
 				D955E4761A9585190009D94A /* Session.swift in Sources */,
 				D955E43F1A9584A50009D94A /* SecondViewController.swift in Sources */,
+				D955E47E1A96C8DE0009D94A /* ViewConstants.swift in Sources */,
 				D955E4781A958CAF0009D94A /* Parser.swift in Sources */,
+				D955E47B1A96C7770009D94A /* LoginView.swift in Sources */,
 				D955E43B1A9584A50009D94A /* AppDelegate.swift in Sources */,
 				D955E43D1A9584A50009D94A /* FirstViewController.swift in Sources */,
 			);
@@ -532,6 +552,7 @@
 				D955E4581A9584A50009D94A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D955E4591A9584A50009D94A /* Build configuration list for PBXNativeTarget "onePISDTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +561,7 @@
 				D955E45B1A9584A50009D94A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
