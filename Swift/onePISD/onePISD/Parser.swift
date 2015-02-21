@@ -30,7 +30,7 @@ class Parser {
 		let index_start = html.rangeOfString("\"uID\" value=\"")!.endIndex
 		var index_end = index_start
 		
-		for i in 1...50 {
+		for _ in 1...50 {
 			index_end = index_end.successor()
 		}
 		
@@ -77,7 +77,7 @@ class Parser {
 		return form
 	}
 	
-	class func getReportTableFromHTML(html: String) {
+	class func getReportTableFromHTML(html: String) -> [Course] {
 		let divisorString = "<td class=\"gradeNumeric\" colspan=\"3\" title=\"\" >"
 		let initGradesString = "<tr class='row"
 		let endGradesString = "</tbody>"
@@ -102,7 +102,7 @@ class Parser {
 			}
 		}
 		
-		print(courses)
+		return courses
 		
 		//println(courseStrings)
 		
@@ -128,7 +128,7 @@ class Parser {
 		stringBuffer = stringBuffer?.substringFromIndex(1)
 	
 		let period = (stringBuffer! as String).toInt()!
-		var grades = [Int : Int?]()
+		var grades = [Grade]()
 	
 		scanner.scanUpToString("<td", intoString: nil) //Begin grade grabbing
 		
@@ -139,7 +139,15 @@ class Parser {
 		for _ in 1...5 {
 			scanner.scanUpToString("</td", intoString: &stringBuffer)
 			let (grade, termID) = self.extractGradeAndTermID(stringBuffer!)
-			grades[grade] = termID
+			if let tid = termID {
+				grades.append(Grade(termID: tid, grade: grade))
+			}
+			else if grade != -1 {
+				grades.append(Grade(termID: 0, grade: grade))
+			}
+			else {
+				grades.append(Grade(blank: true))
+			}
 			scanner.scanUpToString("<td", intoString: nil)
 		}
 		
@@ -150,13 +158,19 @@ class Parser {
 		for _ in 1...5 {
 			scanner.scanUpToString("</td", intoString: &stringBuffer)
 			let (grade, termID) = self.extractGradeAndTermID(stringBuffer!)
-			grades[grade] = termID
+			if let tid = termID {
+				grades.append(Grade(termID: tid, grade: grade))
+			}
+			else if grade != -1 {
+				grades.append(Grade(termID: 1, grade: grade))
+			}
+			else {
+				grades.append(Grade(blank: true))
+			}
 			scanner.scanUpToString("<td", intoString: nil)
 		}
 		
 		return Course(name: title, period: period, grades: grades, enrollmentID: enrollmentID)
-		
-		
 	}
 	
 	private class func extractClassTitleAndID(html: String) -> (String, Int) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90766E01A98EDE40039209E /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90766DF1A98EDE40039209E /* Grade.swift */; };
 		D955E43B1A9584A50009D94A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E43A1A9584A50009D94A /* AppDelegate.swift */; };
 		D955E43D1A9584A50009D94A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E43C1A9584A50009D94A /* FirstViewController.swift */; };
 		D955E43F1A9584A50009D94A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D955E43E1A9584A50009D94A /* SecondViewController.swift */; };
@@ -87,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D90766DF1A98EDE40039209E /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		D955E4351A9584A50009D94A /* onePISD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onePISD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D955E4391A9584A50009D94A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D955E43A1A9584A50009D94A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				D95CA8DD1A984E5A00545646 /* Course.swift */,
 				D955E4751A9585190009D94A /* Session.swift */,
 				D955E4771A958CAF0009D94A /* Parser.swift */,
+				D90766DF1A98EDE40039209E /* Grade.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				D95CA8DE1A984E5A00545646 /* Course.swift in Sources */,
 				D95CA8BA1A97B40800545646 /* SwiftOverlays.swift in Sources */,
 				D955E4761A9585190009D94A /* Session.swift in Sources */,
+				D90766E01A98EDE40039209E /* Grade.swift in Sources */,
 				D955E43F1A9584A50009D94A /* SecondViewController.swift in Sources */,
 				D955E47E1A96C8DE0009D94A /* ViewConstants.swift in Sources */,
 				D955E4781A958CAF0009D94A /* Parser.swift in Sources */,

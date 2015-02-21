@@ -39,6 +39,7 @@ class Session {
 	
 	var grade_form: [String: String]?
 	var pinnacle_form: [String: String]?
+	var grade_list: [Course]?
 	
 	var studentId: String? //Not used yet, but can be found in the first few logins.
 	
@@ -128,14 +129,16 @@ class Session {
 	private func loadMainGradePage(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Loading Gradebook")
 		self.manager.request(.POST, url_pinnacle, parameters: pinnacle_form!).responseString { (_, response, html_data, _) in
-			self.grabSemesterGrades(completionHandler)
+			self.setSemesterGrades(completionHandler)
 		}
 	}
 	
-	private func grabSemesterGrades(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
+	private func setSemesterGrades(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Grabbing Semester Grades")
 		self.manager.request(.GET, url_gradesummary).responseString { (_, response, html_data, _) in
-			Parser.getReportTableFromHTML(html_data!)
+			let courses = Parser.getReportTableFromHTML(html_data!)
+			
+			self.grade_list = courses
 			completionHandler(response!, html_data!, nil)
 		}
 	}

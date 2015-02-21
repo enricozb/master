@@ -11,10 +11,10 @@ import Foundation
 class Course {
 	let name: String
 	let period: Int
-	let grades: [Int : Int?] //Grade : TermID (might be semester grade, which has no TermID
+	let grades: [Grade]
 	let enrollmentID: Int
 	
-	init(name: String, period: Int, grades: [Int: Int?], enrollmentID: Int) {
+	init(name: String, period: Int, grades: [Grade], enrollmentID: Int) {
 		self.name = name
 		self.period = period
 		self.grades = grades
