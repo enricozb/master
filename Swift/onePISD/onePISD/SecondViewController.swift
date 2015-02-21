@@ -12,6 +12,7 @@ class SecondViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		View.currentView = self
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 

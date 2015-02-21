@@ -14,10 +14,29 @@ public struct Storyboard {
 }
 
 public class View {
+	
+	//Static variable workaround. Thank you swift.
+	private struct currentViewStruct {
+		static var view : UIViewController?
+	}
+	
+	class var currentView : UIViewController {
+		get { return currentViewStruct.view! }
+		set { currentViewStruct.view = newValue }
+	}
+	
 	class func loadView(storyboardID: String, fromView: UIViewController) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let destinationView = storyboard.instantiateViewControllerWithIdentifier(storyboardID) as UIViewController
 		
 		fromView.presentViewController(destinationView, animated: true, completion: nil)
+	}
+	class func showWaitOverlayWithText(string: String) {
+		self.clearOverlays()
+		currentView.showWaitOverlayWithText(string)
+		println(string)
+	}
+	class func clearOverlays() {
+		SwiftOverlays.removeAllOverlaysFromView(currentView.view)
 	}
 }

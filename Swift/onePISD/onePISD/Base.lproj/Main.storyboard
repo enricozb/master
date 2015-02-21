@@ -129,6 +129,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="ERn-yi-b6y" id="Bh0-gy-mdA"/>
+                        <outlet property="textFieldBackground" destination="aM6-Fj-hqf" id="p25-6v-mxx"/>
                         <outlet property="usernameTextField" destination="tRs-j5-DOw" id="4Ga-5B-yK1"/>
                     </connections>
                 </viewController>
