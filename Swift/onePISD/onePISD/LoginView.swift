@@ -27,18 +27,12 @@ class LoginView : UIViewController {
 				println("wrong credentials")
 				self.notifyWrongCredentials()
 			}
+			else if error == SessionError.noInternetConnection {
+				println("shit")
+			}
 			else {
 				println("Grades Loaded!")
-				
-				println(MainSession.session.studentID()!)
-				for course in MainSession.session.courses()! {
-					println(course.name)
-					for grade in course.grades {
-						println("\t\(grade.grade) \(grade.termID)")
-					}
-				}
-				
-				View.loadView(Storyboard.Main, fromView: self)
+				View.loadView(Storyboard.GradeSummary, fromView: self)
 			}
 		}
 	}

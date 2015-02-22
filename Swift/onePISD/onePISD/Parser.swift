@@ -121,7 +121,7 @@ class Parser {
 		
 	}
 	
-	/* ----- Private Parser Functions ----- */
+	// MARK: Private class methods
 	
 	private class func extractCourse(html: String) -> (Course?, Int?){
 		let scanner = NSScanner(string: html)

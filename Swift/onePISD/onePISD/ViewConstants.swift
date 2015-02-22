@@ -10,10 +10,10 @@ import UIKit
 
 public struct Storyboard {
 	static let Login = "LoginView"
-	static let Main = "MainTabView"
+	static let GradeSummary = "MainTabView"
 }
 
-public class View {
+public class View: NSObject {
 	
 	//Static variable workaround. Thank you swift.
 	private struct currentViewStruct {
@@ -31,6 +31,13 @@ public class View {
 		
 		fromView.presentViewController(destinationView, animated: true, completion: nil)
 	}
+	
+	class func showTextOverlay(string: String, clearAfter time: Double) {
+		self.clearOverlays()
+		currentView.showTextOverlay(string)
+		NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: Selector("clearOverlays"), userInfo: nil, repeats: false)
+	}
+	
 	class func showWaitOverlayWithText(string: String) {
 		self.clearOverlays()
 		currentView.showWaitOverlayWithText(string)

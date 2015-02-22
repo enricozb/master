@@ -24,6 +24,9 @@ import UIKit
 		_	no internet connection
 		_	PISD problems (timeout)
 	
+	add functions
+		_	daily/major grade grabber for each six weeks
+
 	rewrite for clarity, and convention
 		*	make studentId an instance variable of session, not of grade
 */
@@ -52,6 +55,7 @@ class Session {
 	private let url_grades = "https://parentviewer.pisd.edu/EP/PIV_Passthrough.aspx"
 	private let url_pinnacle = "https://gradebook.pisd.edu/Pinnacle/Gradebook/link.aspx?target=InternetViewer"
 	private let url_gradesummary = "https://gradebook.pisd.edu/Pinnacle/Gradebook/InternetViewer/GradeSummary.aspx"
+	private let url_gradeassignments = "https://gradebook.pisd.edu/Pinnacle/Gradebook/InternetViewer/StudentAssignments.aspx?"
 	
 	private var username: String
 	private var password: String
@@ -89,10 +93,16 @@ class Session {
 		Attempts to login and grab all grades in one go. If successful, grades() will return a [Course]?
 		Use with a trailing closure with parameters (NSHTTPURLResponse, String, SessionError?)
 	*/
-	func login(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
+	func login(completionHandler: (NSHTTPURLResponse?, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Attempting Login")
-		self.manager.request(.GET, url_login).responseString { (_, response, string, _) in
-			self.loginWithParams(string!, completionHandler: completionHandler)
+		self.manager.request(.GET, url_login).responseString { (_, response, html_data, error) in
+			if error?.code == -1009 {
+				View.showTextOverlay("No Internet Connection", clearAfter: 5)
+				completionHandler(response, html_data!, SessionError.noInternetConnection)
+			}
+			else {
+				self.loginWithParams(html_data!, completionHandler: completionHandler)
+			}
 		}
 	}
 	
@@ -104,7 +114,7 @@ class Session {
 		return studentId
 	}
 	
-	/* ----- Private Session Functions ----- */
+	// MARK: Private class methods
 	
 	private func loginWithParams(html: String, completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Setting Parameters")
@@ -139,7 +149,7 @@ class Session {
 	}
 	
 	private func loadMainPage(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
-		View.showWaitOverlayWithText("Loading Gradebook")
+		View.showWaitOverlayWithText("Refreshing")
 		self.manager.request(.GET, url_user).responseString { (_, response, html_data, _) in
 			let url_redirect = Parser.getRedirectfromHTML(html_data!)
 			self.grabGradeFormWithURL(url_redirect, completionHandler)
