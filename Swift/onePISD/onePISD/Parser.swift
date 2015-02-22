@@ -109,16 +109,6 @@ class Parser {
 		}
 		
 		return (courses, studentID)
-		
-		//println(courseStrings)
-		
-		/*
-		let scanner = NSScanner(string: gradeString)
-		var stringBuffer: NSString?
-		scanner.scanString(endTitleString, intoString: nil)
-		scanner.scanUpToString(endCourseString, intoString: &stringBuffer)
-		*/
-		
 	}
 	
 	// MARK: Private class methods
