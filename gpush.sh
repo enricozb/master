@@ -8,6 +8,8 @@ then
 	read arg_1
 fi
 cd ~/Documents/SublimeFiles/master
+git config --global user.name "Enrico Borba"
+git config --global user.email enricozb@gmail.com
 git rm -r --cache .
 git add .
 git commit -m "$arg_1"
