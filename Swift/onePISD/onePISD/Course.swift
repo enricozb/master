@@ -19,5 +19,9 @@ class Course {
 		self.period = period
 		self.grades = grades
 		self.enrollmentID = enrollmentID
+		
+		for grade in grades {
+			grade.course = self
+		}
 	}
 }

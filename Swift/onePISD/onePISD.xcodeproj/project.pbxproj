@@ -26,7 +26,7 @@
 		D96743B91A96EDDF002B1C57 /* LoginTextFieldFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = D96743B81A96EDDF002B1C57 /* LoginTextFieldFilled.png */; };
 		D96743BB1A96F2BB002B1C57 /* LoginButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = D96743BA1A96F2BB002B1C57 /* LoginButtonPressed.png */; };
 		D96743BD1A96F2C9002B1C57 /* LoginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D96743BC1A96F2C9002B1C57 /* LoginButton.png */; };
-		D9CA0F5C1A9A2B3D0010B639 /* MiniGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA0F5B1A9A2B3D0010B639 /* MiniGrade.swift */; };
+		D9CA0F5C1A9A2B3D0010B639 /* Assignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CA0F5B1A9A2B3D0010B639 /* Assignment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +112,7 @@
 		D96743B81A96EDDF002B1C57 /* LoginTextFieldFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginTextFieldFilled.png; sourceTree = "<group>"; };
 		D96743BA1A96F2BB002B1C57 /* LoginButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginButtonPressed.png; path = Assets/LoginButtonPressed.png; sourceTree = SOURCE_ROOT; };
 		D96743BC1A96F2C9002B1C57 /* LoginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginButton.png; sourceTree = "<group>"; };
-		D9CA0F5B1A9A2B3D0010B639 /* MiniGrade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGrade.swift; sourceTree = "<group>"; };
+		D9CA0F5B1A9A2B3D0010B639 /* Assignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assignment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +203,7 @@
 				D955E4751A9585190009D94A /* Session.swift */,
 				D955E4771A958CAF0009D94A /* Parser.swift */,
 				D90766DF1A98EDE40039209E /* Grade.swift */,
-				D9CA0F5B1A9A2B3D0010B639 /* MiniGrade.swift */,
+				D9CA0F5B1A9A2B3D0010B639 /* Assignment.swift */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D95CA8DE1A984E5A00545646 /* Course.swift in Sources */,
-				D9CA0F5C1A9A2B3D0010B639 /* MiniGrade.swift in Sources */,
+				D9CA0F5C1A9A2B3D0010B639 /* Assignment.swift in Sources */,
 				D95CA8BA1A97B40800545646 /* SwiftOverlays.swift in Sources */,
 				D955E4761A9585190009D94A /* Session.swift in Sources */,
 				D90766E01A98EDE40039209E /* Grade.swift in Sources */,

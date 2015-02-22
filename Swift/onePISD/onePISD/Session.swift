@@ -106,6 +106,24 @@ class Session {
 		}
 	}
 	
+	func loadAssignmentsForGrade(grade: Grade, completionHandler: (NSHTTPURLResponse?, String, SessionError?) -> ()) {
+		
+		let params = [
+			"EnrollmentId"	: "\(grade.course!.enrollmentID)",
+			"TermId"		: "\(grade.termID)",
+			"StudentId"		: "\(studentId!)",
+			"H"				: "G"	//No idea what this is, but it's in the form
+		]
+		let url = "\(url_gradeassignments) "
+		self.manager.request(.GET, url_gradeassignments, parameters: params).responseString {
+			(request, response, html_data, error) in
+			
+			Parser.getAssignmentsFromHTML(html_data!)
+			
+			completionHandler(response, html_data!, nil)
+		}
+	}
+	
 	func courses() -> [Course]? {
 		return course_list
 	}

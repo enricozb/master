@@ -9,10 +9,11 @@
 import Foundation
 
 class Grade {
+	var course : Course?
 	let termID : Int
 	let grade : Int
 	let blank : Bool
-	let minigrades : [MiniGrade]?
+	let minigrades : [Assignment]?
 	
 	init(termID: Int, grade: Int) {
 		self.termID = termID

@@ -111,6 +111,17 @@ class Parser {
 		return (courses, studentID)
 	}
 	
+	class func getAssignmentsFromHTML(html: String) -> [Assignment] {
+		let string_beginAssignments = "<table id=\"Assignments\" class=\"reportTable\">"
+		let string_endAssignments = "</table>"
+		var substring = html.substringFromIndex(html.rangeOfString(string_beginAssignments)!.startIndex)
+		substring = substring.substringToIndex(substring.rangeOfString(string_endAssignments)!.endIndex)
+		println(substring)
+		
+		//Next - Trim substring to only include <tbody> ... </tbody> and parse each assignment.
+		return [Assignment]()
+	}
+	
 	// MARK: Private class methods
 	
 	private class func extractCourse(html: String) -> (Course?, Int?){

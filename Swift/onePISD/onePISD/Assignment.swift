@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MiniGrade {
+class Assignment {
 	let name : String
 	let date : String
 	let category : String

@@ -13,6 +13,9 @@ class FirstViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		View.currentView = self
+		MainSession.session.loadAssignmentsForGrade(MainSession.session.courses()![1].grades[0]) {
+			(response, html_data, error) in
+		}
 	}
 	
 	override func didReceiveMemoryWarning() {
