@@ -20,19 +20,15 @@ class LoginView : UIViewController {
 		
 		self.view.endEditing(false)
 		
-		//println(usernameTextField.text)
-		//println(passwordTextField.text)
-		
 		MainSession.session.setCredentials(username: usernameTextField.text, password: passwordTextField.text)
 		
-		MainSession.session.getSixWeekGrades { (response, html_data, error) in
+		MainSession.session.login { (response, html_data, error) in
 			if error == SessionError.wrongCredentials {
 				println("wrong credentials")
 				self.notifyWrongCredentials()
 			}
 			else {
 				println("Grades Loaded!")
-				//println(html_data)
 				View.loadView(Storyboard.Main, fromView: self)
 			}
 		}

@@ -13,18 +13,6 @@ class FirstViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		View.currentView = self
-		/*
-		var session = Session(username: "enrieco.borba.1", password: "inferno&7")
-		session.getSixWeekGrades { (response, html_data, error) in
-			//println(response)
-			if error == SessionError.wrongCredentials {
-				println("wrong password")
-			}
-			else {
-				println(html_data)
-			}
-		}
-		*/
 	}
 	
 	override func didReceiveMemoryWarning() {

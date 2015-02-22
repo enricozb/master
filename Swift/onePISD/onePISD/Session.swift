@@ -10,10 +10,27 @@ import Foundation
 import Alamofire
 import UIKit
 
-/* TODO
-	add storage mechanism for other fields
+/* ----- TODO ------
+	possibly remove View attachment, not sure how loading/activity would work...
+
+	add storage mechanism for other fields 
+		*	grades
+		_	studentId
+		_	Tickets?
+		
 	error handling (no connection, wrong password, etc)
-	rewrite.
+		*	wrong password
+		_	no internet connection
+		_	PISD problems (timeout)
+	
+	rewrite for clarity and useability.
+*/
+
+/* ----- Public Functions -----
+	login			- () used with a trailing closure to attempt to login. completionHandler consists of (NSHTTPURLResponse, String, SessionError?)
+	grades			- () returns grades [Course]?
+	studentId		- () returns studentId
+	setCredentials	- (username: String, password: String) is obvious.
 */
 
 public struct MainSession {
@@ -22,26 +39,28 @@ public struct MainSession {
 
 enum SessionError {
 	case wrongCredentials
+	case timeout
+	case noInternetConnection
 }
 
 class Session {
 	
-	let url_login = "https://sso.portal.mypisd.net/cas/login?"
-	let url_user = "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin"
-	let url_grades = "https://parentviewer.pisd.edu/EP/PIV_Passthrough.aspx"
-	let url_pinnacle = "https://gradebook.pisd.edu/Pinnacle/Gradebook/link.aspx?target=InternetViewer"
-	let url_gradesummary = "https://gradebook.pisd.edu/Pinnacle/Gradebook/InternetViewer/GradeSummary.aspx"
+	private let url_login = "https://sso.portal.mypisd.net/cas/login?"
+	private let url_user = "https://sso.portal.mypisd.net/cas/login?service=http%3A%2F%2Fportal.mypisd.net%2Fc%2Fportal%2Flogin"
+	private let url_grades = "https://parentviewer.pisd.edu/EP/PIV_Passthrough.aspx"
+	private let url_pinnacle = "https://gradebook.pisd.edu/Pinnacle/Gradebook/link.aspx?target=InternetViewer"
+	private let url_gradesummary = "https://gradebook.pisd.edu/Pinnacle/Gradebook/InternetViewer/GradeSummary.aspx"
 	
-	var username: String
-	var password: String
+	private var username: String
+	private var password: String
 	
-	let manager: Alamofire.Manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+	private let manager: Alamofire.Manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 	
-	var grade_form: [String: String]?
-	var pinnacle_form: [String: String]?
-	var grade_list: [Course]?
+	private var grade_form: [String: String]?
+	private var pinnacle_form: [String: String]?
+	private var grade_list: [Course]?
 	
-	var studentId: String? //Not used yet, but can be found in the first few logins.
+	private var studentId: Int? //Not used yet, but can be found in the first few logins. And in grades?
 	
 	init(username: String, password: String) {
 		self.username = username
@@ -53,21 +72,29 @@ class Session {
 		self.password = ""
 	}
 	
+	/**
+		Sets the credentials (username and password) of the current session
+	
+		:param: username The username for the Session
+		:param: password The password for the Session
+	*/
 	func setCredentials(#username: String, password: String) {
 		self.username = username
 		self.password = password
 	}
-	
-	func getSixWeekGrades(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
-		login(completionHandler)
-	}
-	
-	private func login(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
+
+	/**
+		Attempts to login and grab all grades in one go. If successful, grades() will return a [Course]?
+		Use with a trailing closure with parameters (NSHTTPURLResponse, String, SessionError?)
+	*/
+	func login(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Attempting Login")
 		self.manager.request(.GET, url_login).responseString { (_, response, string, _) in
 			self.loginWithParams(string!, completionHandler: completionHandler)
 		}
 	}
+	
+	/* ----- Private Session Functions ----- */
 	
 	private func loginWithParams(html: String, completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Setting Parameters")
@@ -86,7 +113,7 @@ class Session {
 		self.manager.request(.POST, url_login, parameters: params).responseString { (_, response, html_data, error) in
 			
 			//PARSE RESPONSE HERE; CHECK FOR WRONG PASSWORD (~11 elements = correct password, ~10 elements = incorrect password)
-			//OR CHECK FOR nil on "Set-Cookie" in response
+			//OR CHECK FOR nil on "Set-Cookie" in response <- much better
 			
 			View.showWaitOverlayWithText("Grabbing Cookies")
 			let responseDict = response!.allHeaderFields as [String: String]
@@ -137,7 +164,6 @@ class Session {
 		View.showWaitOverlayWithText("Grabbing Semester Grades")
 		self.manager.request(.GET, url_gradesummary).responseString { (_, response, html_data, _) in
 			let courses = Parser.getReportTableFromHTML(html_data!)
-			
 			self.grade_list = courses
 			completionHandler(response!, html_data!, nil)
 		}

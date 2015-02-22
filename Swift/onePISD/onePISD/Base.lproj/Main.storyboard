@@ -7,6 +7,7 @@
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="onePISD" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BGK-WD-D7j"/>
@@ -34,9 +35,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961.06666666666661" y="-90.879999999999995"/>
+            <point key="canvasLocation" x="1013" y="-217"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961.06666666666661" y="552.85333333333335"/>
+            <point key="canvasLocation" x="1013" y="415"/>
         </scene>
         <!--Login View-->
         <scene sceneID="FGn-F4-8Up">

@@ -115,6 +115,8 @@ class Parser {
 		
 	}
 	
+	/* ----- Private Parser Functions ----- */
+	
 	private class func extractCourse(html: String) -> Course?{
 		let scanner = NSScanner(string: html)
 		var stringBuffer: NSString?
