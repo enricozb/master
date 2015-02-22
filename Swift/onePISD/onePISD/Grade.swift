@@ -12,6 +12,7 @@ class Grade {
 	let termID : Int
 	let grade : Int
 	let blank : Bool
+	let minigrades : [MiniGrade]?
 	
 	init(termID: Int, grade: Int) {
 		self.termID = termID

@@ -29,12 +29,21 @@ class LoginView : UIViewController {
 			}
 			else {
 				println("Grades Loaded!")
+				
+				println(MainSession.session.studentID()!)
+				for course in MainSession.session.courses()! {
+					println(course.name)
+					for grade in course.grades {
+						println("\t\(grade.grade) \(grade.termID)")
+					}
+				}
+				
 				View.loadView(Storyboard.Main, fromView: self)
 			}
 		}
 	}
 	
-	func notifyWrongCredentials() {
+	private func notifyWrongCredentials() {
 		let useranimation = CABasicAnimation(keyPath: "position")
 		useranimation.duration = 0.06
 		useranimation.repeatCount = 3

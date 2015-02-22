@@ -12,10 +12,11 @@ import UIKit
 
 /* ----- TODO ------
 	possibly remove View attachment, not sure how loading/activity would work...
+		-	possibly use a view instance. Would have to change when views are changed...
 
 	add storage mechanism for other fields 
 		*	grades
-		_	studentId
+		*	studentId
 		_	Tickets?
 		
 	error handling (no connection, wrong password, etc)
@@ -23,13 +24,14 @@ import UIKit
 		_	no internet connection
 		_	PISD problems (timeout)
 	
-	rewrite for clarity and useability.
+	rewrite for clarity, and convention
+		*	make studentId an instance variable of session, not of grade
 */
 
 /* ----- Public Functions -----
 	login			- () used with a trailing closure to attempt to login. completionHandler consists of (NSHTTPURLResponse, String, SessionError?)
-	grades			- () returns grades [Course]?
-	studentId		- () returns studentId
+	courses			- () returns grades [Course]?
+	* studentId		- removed, now contained in each Grade
 	setCredentials	- (username: String, password: String) is obvious.
 */
 
@@ -56,11 +58,11 @@ class Session {
 	
 	private let manager: Alamofire.Manager = Alamofire.Manager(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
 	
+	private var studentId: Int?
+	
 	private var grade_form: [String: String]?
 	private var pinnacle_form: [String: String]?
-	private var grade_list: [Course]?
-	
-	private var studentId: Int? //Not used yet, but can be found in the first few logins. And in grades?
+	private var course_list: [Course]?
 	
 	init(username: String, password: String) {
 		self.username = username
@@ -92,6 +94,14 @@ class Session {
 		self.manager.request(.GET, url_login).responseString { (_, response, string, _) in
 			self.loginWithParams(string!, completionHandler: completionHandler)
 		}
+	}
+	
+	func courses() -> [Course]? {
+		return course_list
+	}
+	
+	func studentID() -> Int? {
+		return studentId
 	}
 	
 	/* ----- Private Session Functions ----- */
@@ -163,8 +173,9 @@ class Session {
 	private func setSemesterGrades(completionHandler: (NSHTTPURLResponse, String, SessionError?) -> ()) {
 		View.showWaitOverlayWithText("Grabbing Semester Grades")
 		self.manager.request(.GET, url_gradesummary).responseString { (_, response, html_data, _) in
-			let courses = Parser.getReportTableFromHTML(html_data!)
-			self.grade_list = courses
+			let (courses, studentId) = Parser.getReportTableFromHTML(html_data!)
+			self.course_list = courses
+			self.studentId = studentId
 			completionHandler(response!, html_data!, nil)
 		}
 	}

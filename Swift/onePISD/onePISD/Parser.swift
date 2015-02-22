@@ -7,8 +7,9 @@
 //
 
 /* TODO
-	inout parameters for _form_ functions
-	rewrite some shit
+	_	inout parameters for _form_ functions
+	_	support for semester courses, and for dropped/1.5 credit courses
+	_	rewrite some shit
 */
 import Foundation
 
@@ -77,7 +78,7 @@ class Parser {
 		return form
 	}
 	
-	class func getReportTableFromHTML(html: String) -> [Course] {
+	class func getReportTableFromHTML(html: String) -> ([Course], Int) {
 		let divisorString = "<td class=\"gradeNumeric\" colspan=\"3\" title=\"\" >"
 		let initGradesString = "<tr class='row"
 		let endGradesString = "</tbody>"
@@ -94,15 +95,20 @@ class Parser {
 		
 		courseStrings.removeLast()
 		
+		var studentID: Int = 0
+		
 		var courses = [Course]()
 		for courseString in courseStrings {
-			let possibleCourse = extractCourse(courseString)
+			let (possibleCourse, possibleStudentID) = extractCourse(courseString)
 			if let course = possibleCourse {
 				courses.append(course)
 			}
+			if possibleStudentID != nil && studentID == 0 {
+				studentID = possibleStudentID!
+			}
 		}
 		
-		return courses
+		return (courses, studentID)
 		
 		//println(courseStrings)
 		
@@ -117,7 +123,7 @@ class Parser {
 	
 	/* ----- Private Parser Functions ----- */
 	
-	private class func extractCourse(html: String) -> Course?{
+	private class func extractCourse(html: String) -> (Course?, Int?){
 		let scanner = NSScanner(string: html)
 		var stringBuffer: NSString?
 		
@@ -135,48 +141,33 @@ class Parser {
 		scanner.scanUpToString("<td", intoString: nil) //Begin grade grabbing
 		
 		if scanner.scanString("<td class=\"disabledCell\"", intoString: nil) {
-			return nil
+			return (nil, nil)
 		}
 		
-		for _ in 1...5 {
+		var studentID: Int = 0
+		
+		for i in 0...9 {
 			scanner.scanUpToString("</td", intoString: &stringBuffer)
-			let (grade, termID) = self.extractGradeAndTermID(stringBuffer!)
+			let (grade, termID, possibleStudentID) = self.extractGradeAndTermIDAndStudentID(stringBuffer!)
 			if let tid = termID {
+				if studentID == 0 {
+					studentID = possibleStudentID!
+				}
 				grades.append(Grade(termID: tid, grade: grade))
 			}
 			else if grade != -1 {
-				grades.append(Grade(termID: 0, grade: grade))
+				grades.append(Grade(termID: i/5, grade: grade))
 			}
 			else {
 				grades.append(Grade(blank: true))
 			}
 			scanner.scanUpToString("<td", intoString: nil)
 		}
-		
-		if !scanner.scanString("<td", intoString: nil) {
-			return Course(name: title, period: period, grades: grades, enrollmentID: enrollmentID)
-		}
-		
-		for _ in 1...5 {
-			scanner.scanUpToString("</td", intoString: &stringBuffer)
-			let (grade, termID) = self.extractGradeAndTermID(stringBuffer!)
-			if let tid = termID {
-				grades.append(Grade(termID: tid, grade: grade))
-			}
-			else if grade != -1 {
-				grades.append(Grade(termID: 1, grade: grade))
-			}
-			else {
-				grades.append(Grade(blank: true))
-			}
-			scanner.scanUpToString("<td", intoString: nil)
-		}
-		
-		return Course(name: title, period: period, grades: grades, enrollmentID: enrollmentID)
+		return (Course(name: title, period: period, grades: grades, enrollmentID: enrollmentID), studentID)
 	}
 	
 	private class func extractClassTitleAndID(html: String) -> (String, Int) {
-		//Comes in as <a href="javascript:ClassDetails.getClassDetails(...);">CLASS TITLE</a></th>
+		// Comes in as <a href="javascript:ClassDetails.getClassDetails(...);">CLASS TITLE</a></th> (...) is enrollementID
 		var substring: String = html.substringFromIndex(html.rangeOfString(">")!.endIndex)
 		let title =  substring.substringToIndex(substring.rangeOfString("<")!.startIndex)
 		
@@ -186,7 +177,7 @@ class Parser {
 		return (title, enrollmentID)
 	}
 	
-	private class func extractGradeAndTermID(html: String) -> (Int, Int?) {
+	private class func extractGradeAndTermIDAndStudentID(html: String) -> (Int, Int?, Int?) {
 		var scanner = NSScanner(string: html)
 		var stringBuffer: NSString?
 		scanner.scanUpToString(">", intoString: nil)
@@ -194,28 +185,38 @@ class Parser {
 		stringBuffer = stringBuffer?.substringFromIndex(1)
 		
 		if let grade = (stringBuffer! as String).toInt() {
-			return (grade, nil)
+			return (grade, nil, nil)
 		}
 		else if stringBuffer!.length == 0 {
-			return (-1, nil)
+			return (-1, nil, nil)
 		}
 		
 		scanner = NSScanner(string: stringBuffer!)
+		
+		 // Now scanning this <a href="StudentAssignments.aspx?EnrollmentId=0&amp;TermId=0&amp;StudentId=0&amp;H=G"></a>
+		
 		scanner.scanUpToString("TermId=", intoString: nil)
-		scanner.scanUpToString("&", intoString: &stringBuffer) // EnrollmentId=3662962& <-
+		scanner.scanUpToString("&", intoString: &stringBuffer) // TermID=0
 		stringBuffer = stringBuffer?.substringFromIndex(countElements("TermId="))
 		
 		let termID = (stringBuffer! as String).toInt()!
+		
+		scanner.scanUpToString("StudentId=", intoString: nil)
+		scanner.scanUpToString("&", intoString: &stringBuffer)
+		
+		stringBuffer = stringBuffer?.substringFromIndex(countElements("StudentId="))
+		
+		let studentID = (stringBuffer! as String).toInt()!
 		
 		scanner.scanUpToString(">", intoString: nil)
 		scanner.scanUpToString("<", intoString: &stringBuffer)
 		stringBuffer = stringBuffer?.substringFromIndex(1)
 		
 		if stringBuffer?.length == 0 {
-			return (-1, termID)
+			return (-1, termID, studentID)
 		}
 		else {
-			return ((stringBuffer! as String).toInt()!, termID)
+			return ((stringBuffer! as String).toInt()!, termID, studentID)
 		}
 	}
 }
