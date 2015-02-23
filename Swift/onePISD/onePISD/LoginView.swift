@@ -24,14 +24,11 @@ class LoginView : UIViewController {
 		
 		MainSession.session.login { (response, html_data, error) in
 			if error == SessionError.wrongCredentials {
-				println("wrong credentials")
+				println("Wrong Credentials")
 				self.notifyWrongCredentials()
 			}
-			else if error == SessionError.noInternetConnection {
-				println("shit")
-			}
-			else {
-				println("Grades Loaded!")
+			else if error != SessionError.noInternetConnection {
+				println("Six Week Grades Loaded!")
 				View.loadView(Storyboard.GradeSummary, fromView: self)
 			}
 		}

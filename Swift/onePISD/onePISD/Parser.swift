@@ -7,6 +7,7 @@
 //
 
 /* TODO
+	*	parse individual assignments
 	_	inout parameters for _form_ functions
 	_	support for semester courses, and for dropped/1.5 credit courses
 	_	rewrite some shit
@@ -115,11 +116,21 @@ class Parser {
 		let string_beginAssignments = "<table id=\"Assignments\" class=\"reportTable\">"
 		let string_endAssignments = "</table>"
 		var substring = html.substringFromIndex(html.rangeOfString(string_beginAssignments)!.startIndex)
-		substring = substring.substringToIndex(substring.rangeOfString(string_endAssignments)!.endIndex)
-		println(substring)
+		substring = substring.substringFromIndex(substring.rangeOfString("<tbody>")!.endIndex)
+		let assignmentString = substring.substringToIndex(substring.rangeOfString("</tbody>")!.startIndex)
 		
-		//Next - Trim substring to only include <tbody> ... </tbody> and parse each assignment.
-		return [Assignment]()
+		//Trim substring to only include <tbody> ... </tbody> and parse each assignment.
+		
+		var assignments = [Assignment]()
+		let scanner = NSScanner(string: assignmentString)
+		var stringBuffer : NSString?
+		while scanner.scanString("<tr>", intoString: nil) {
+			scanner.scanUpToString("<tr>", intoString: &stringBuffer)
+			let singleAssignment = Parser.getSingleAssignmentFromHTML(stringBuffer!)
+			assignments.append(singleAssignment)
+		}
+		return assignments
+		
 	}
 	
 	// MARK: Private class methods
@@ -219,5 +230,43 @@ class Parser {
 		else {
 			return ((stringBuffer! as String).toInt()!, termID, studentID)
 		}
+	}
+	
+	private class func getSingleAssignmentFromHTML(html: String) -> Assignment{
+		var scanner = NSScanner(string: html)
+		var stringBuffer: NSString?
+		
+		scanner.scanUpToString("assignmentId=", intoString: nil)
+		scanner.scanUpToString("&", intoString: &stringBuffer)
+		stringBuffer = stringBuffer?.substringFromIndex(countElements("assignmentId="))
+		
+		let assignmentID = (stringBuffer as String).toInt()!
+		
+		scanner.scanUpToString(">", intoString: nil)
+		scanner.scanUpToString("<", intoString: &stringBuffer)
+		stringBuffer = stringBuffer?.substringFromIndex(1)
+		
+		let title = stringBuffer!
+		
+		scanner.scanString("</a></td>", intoString: nil)
+		scanner.scanUpToString(">", intoString: nil)
+		scanner.scanUpToString("<", intoString: &stringBuffer)
+		stringBuffer = stringBuffer?.substringFromIndex(1)
+		
+		let date = stringBuffer!
+		
+		scanner.scanUpToString("<td>", intoString: nil)
+		scanner.scanString("<td>", intoString: nil)
+		scanner.scanUpToString("</td>", intoString: &stringBuffer)
+		
+		let category = stringBuffer!
+		
+		scanner.scanUpToString("<td class=\"grade\">", intoString: nil)
+		scanner.scanString("<td class=\"grade\">", intoString: nil)
+		scanner.scanUpToString("</td>", intoString: &stringBuffer)
+		
+		let grade = (stringBuffer as String).toInt()
+		
+		return Assignment(name: title, date: date, category: category, grade: grade, assignmentID: assignmentID)
 	}
 }

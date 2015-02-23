@@ -25,7 +25,7 @@ import UIKit
 		_	PISD problems (timeout)
 	
 	add functions
-		_	daily/major grade grabber for each six weeks
+		*	daily/major grade grabber for each six weeks
 
 	rewrite for clarity, and convention
 		*	make studentId an instance variable of session, not of grade
@@ -34,7 +34,7 @@ import UIKit
 /* ----- Public Functions -----
 	login			- () used with a trailing closure to attempt to login. completionHandler consists of (NSHTTPURLResponse, String, SessionError?)
 	courses			- () returns grades [Course]?
-	* studentId		- removed, now contained in each Grade
+	studentId		- () returns studentId
 	setCredentials	- (username: String, password: String) is obvious.
 */
 
@@ -118,8 +118,8 @@ class Session {
 		self.manager.request(.GET, url_gradeassignments, parameters: params).responseString {
 			(request, response, html_data, error) in
 			
-			Parser.getAssignmentsFromHTML(html_data!)
-			
+			let assignments = Parser.getAssignmentsFromHTML(html_data!)
+			grade.assignments = assignments
 			completionHandler(response, html_data!, nil)
 		}
 	}
