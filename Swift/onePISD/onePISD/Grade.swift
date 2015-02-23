@@ -8,14 +8,18 @@
 
 import Foundation
 
+/* ----- TODO ------
+	_ possibly change termID to an optional, for semester grades that have no detailed view.
+*/
+
 class Grade {
 	var course : Course?
 	let termID : Int
-	let grade : Int
+	let grade : Int?
 	let blank : Bool
 	var assignments : [Assignment]?
 	
-	init(termID: Int, grade: Int) {
+	init(termID: Int, grade: Int?) {
 		self.termID = termID
 		self.grade = grade
 		self.blank = false

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Enrico Borba. All rights reserved.
 //
 
-/* TODO
+/* ----- TODO ------
 	*	parse individual assignments
 	_	inout parameters for _form_ functions
 	_	support for semester courses, and for dropped/1.5 credit courses
@@ -189,7 +189,7 @@ class Parser {
 		return (title, enrollmentID)
 	}
 	
-	private class func extractGradeAndTermIDAndStudentID(html: String) -> (Int, Int?, Int?) {
+	private class func extractGradeAndTermIDAndStudentID(html: String) -> (Int?, Int?, Int?) {
 		var scanner = NSScanner(string: html)
 		var stringBuffer: NSString?
 		scanner.scanUpToString(">", intoString: nil)
@@ -200,12 +200,12 @@ class Parser {
 			return (grade, nil, nil)
 		}
 		else if stringBuffer!.length == 0 {
-			return (-1, nil, nil)
+			return (nil, nil, nil)
 		}
 		
 		scanner = NSScanner(string: stringBuffer!)
 		
-		 // Now scanning this <a href="StudentAssignments.aspx?EnrollmentId=0&amp;TermId=0&amp;StudentId=0&amp;H=G"></a>
+		 // Now scanning this <a href="StudentAssignments.aspx?EnrollmentId=0&amp;TermId=0&amp;StudentId=0&amp;H=G">0</a>
 		
 		scanner.scanUpToString("TermId=", intoString: nil)
 		scanner.scanUpToString("&", intoString: &stringBuffer) // TermID=0
@@ -225,7 +225,7 @@ class Parser {
 		stringBuffer = stringBuffer?.substringFromIndex(1)
 		
 		if stringBuffer?.length == 0 {
-			return (-1, termID, studentID)
+			return (nil, termID, studentID)
 		}
 		else {
 			return ((stringBuffer! as String).toInt()!, termID, studentID)
