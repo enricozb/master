@@ -1,16 +1,36 @@
 #!/bin/bash
 
-arg_1="$1"
+project="$1"
 
-if [ "$arg_1" = "" ]
-then
+while [ "$project" != "master" ] && [ "$project" != "onePISD" ]
+do
+	echo -n "	Select project (master, onePISD): "
+	read project
+done
+
+msg=""
+
+while [ "$msg" == "" ]
+do
 	echo -n "	Enter a commit message: "
-	read arg_1
-fi
-cd ~/Documents/SublimeFiles/master
+	read msg
+done
+
 git config --global user.name "Enrico Borba"
 git config --global user.email enricozb@gmail.com
-git rm -r --cache .
-git add .
-git commit -m "$arg_1"
-git push -u origin master
+
+if [ "$project" == "master" ]
+then 
+	cd ~/Documents/SublimeFiles/master
+	git rm -r --cache .
+	git add .
+	git commit -m "$msg"
+	git push -u origin master
+elif [ "$project" == "onePISD" ]
+then
+	cd ~/Documents/SublimeFiles/onePISD
+	git rm -r --cache .
+	git add .
+	git commit -m "$msg"
+	git push -u origin master
+fi
