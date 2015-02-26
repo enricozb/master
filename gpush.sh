@@ -27,7 +27,7 @@ elif [ "$project" == "onePISD" ]
 then
 	cd ~/Documents/SublimeFiles/onePISD
 	
-elif [ "$project" != "transient" ]
+elif [ "$project" == "transient" ]
 then 
 	cd ~/Documents/SublimeFiles/transient
 fi
