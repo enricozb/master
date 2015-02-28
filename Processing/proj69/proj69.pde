@@ -1,7 +1,7 @@
 import javax.swing.*;
-
+import java.awt.event.*;
+import fisica.*;
 ArrayList<Window> ws = new ArrayList<Window>();
-
 
 boolean key_up = false;
 boolean key_down = false;
@@ -21,26 +21,36 @@ void setup() {
 }
 
 void draw() {
-	background(0);
+	background(255);
 	for(Window w : ws) {
 		w.updateApplet();
 	}
 	move();
 }
 
-void keyPressed() {
+void refront() {
+	for(Window w : ws) {
+		w.toFront();
+	}
+}
+
+void pressKey(int keyCode) {
+	if (keyCode == ALT) {refront();}
 	if (keyCode == UP) {key_up = true;}
 	if (keyCode == DOWN) {key_down = true;}
 	if (keyCode == RIGHT) {key_right = true;}
 	if (keyCode == LEFT) {key_left = true;}
 }
 
-void keyReleased() {
+void releaseKey(int keyCode) {
 	if (keyCode == UP) {key_up = false;}
 	if (keyCode == DOWN) {key_down = false;}
 	if (keyCode == RIGHT) {key_right = false;}
 	if (keyCode == LEFT) {key_left = false;}
 }
+
+void keyPressed() {pressKey(keyCode);}
+void keyReleased() {releaseKey(keyCode);}
 
 void move() {
 	if( key_up ) { loc.y--; }
@@ -49,7 +59,7 @@ void move() {
 	if( key_left ) { loc.x--; }
 }
 
-class Window extends JFrame {
+class Window extends JFrame{
 	int x, y, w, h;
 	Applet applet;
 
@@ -60,7 +70,6 @@ class Window extends JFrame {
 		this.w = w;
 		this.h = h;
 		this.applet = new Applet();
-
 		reSize();
 		setLocation(x, y);
 		setResizable(false);
@@ -97,12 +106,11 @@ class Window extends JFrame {
 		updateLocation();
 		applet.setSelfLoc(x, y);
 	}
-	
 };
 
 class Applet extends PApplet {
 
-	PVector selfLoc = new PVector(0,0);;
+	PVector selfLoc = new PVector(0,0);
 
 	void setup() {
 		noStroke();
@@ -120,4 +128,7 @@ class Applet extends PApplet {
 	void drawCircle() {
 		ellipse(loc.x - selfLoc.x, loc.y - selfLoc.y, 20, 20);
 	}
+
+	void keyPressed() {pressKey(keyCode);}
+	void keyReleased() {releaseKey(keyCode);}
 };
