@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import fisica.*;
 ArrayList<Window> ws = new ArrayList<Window>();
+//ArrayList<FWorld> worlds = new ArrayList<FWorld>();
 
 boolean key_up = false;
 boolean key_down = false;
@@ -11,12 +12,15 @@ boolean key_left = false;
 PVector loc;
 
 void setup() {
-
+	Fisica.init(this);
 	loc = new PVector(displayWidth/2, displayHeight/2);
 
-	size(200,200);
+	size(300,300);
 	for (int i = 0; i < 3; ++i) {
 		ws.add(new Window(displayWidth/2,displayHeight/2,200,200));
+		//FWorld world = new FWorld();
+		//world.setEdges();
+		//ws.add(world);
 	}
 }
 
@@ -62,7 +66,7 @@ void move() {
 class Window extends JFrame{
 	int x, y, w, h;
 	Applet applet;
-
+	FWorld world;
 	Window(int x, int y, int w, int h) {
 
 		this.x = x;
@@ -70,15 +74,21 @@ class Window extends JFrame{
 		this.w = w;
 		this.h = h;
 		this.applet = new Applet();
+
 		reSize();
 		setLocation(x, y);
 		setResizable(false);
 		add(applet);
     	applet.init();
     	show();
-
     	applet.setSelfLoc(x, y);
 
+		this.world = new FWorld();
+		this.world.setEdges(this.applet, 0);
+		FBox f = new FBox(20,20);
+		f.setPosition(50,50);
+		this.world.addBody(f);
+		applet.world = this.world;
 	}
 
 	void setWidth(int w) { this.w = w; }
@@ -111,7 +121,7 @@ class Window extends JFrame{
 class Applet extends PApplet {
 
 	PVector selfLoc = new PVector(0,0);
-
+	FWorld world;
 	void setup() {
 		noStroke();
 	}
@@ -122,13 +132,16 @@ class Applet extends PApplet {
 	}
 
 	void draw() {
-		background(0);
-		this.drawCircle();
+		background(50);
+		if(world != null) {
+			world.step();
+			world.draw(this);
+		}
+		//this.drawCircle();
 	}
 	void drawCircle() {
 		ellipse(loc.x - selfLoc.x, loc.y - selfLoc.y, 20, 20);
 	}
-
 	void keyPressed() {pressKey(keyCode);}
 	void keyReleased() {releaseKey(keyCode);}
 };
