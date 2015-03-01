@@ -83,12 +83,14 @@ class Window extends JFrame{
     	show();
     	applet.setSelfLoc(x, y);
 
+    	/*
 		this.world = new FWorld();
 		this.world.setEdges(this.applet, 0);
 		FBox f = new FBox(20,20);
 		f.setPosition(50,50);
 		this.world.addBody(f);
 		applet.world = this.world;
+		*/
 	}
 
 	void setWidth(int w) { this.w = w; }
@@ -121,7 +123,7 @@ class Window extends JFrame{
 class Applet extends PApplet {
 
 	PVector selfLoc = new PVector(0,0);
-	FWorld world;
+	//FWorld world;
 	void setup() {
 		noStroke();
 	}
@@ -133,11 +135,13 @@ class Applet extends PApplet {
 
 	void draw() {
 		background(50);
+		/*
 		if(world != null) {
 			world.step();
 			world.draw(this);
 		}
-		//this.drawCircle();
+		*/
+		this.drawCircle();
 	}
 	void drawCircle() {
 		ellipse(loc.x - selfLoc.x, loc.y - selfLoc.y, 20, 20);

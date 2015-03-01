@@ -5,6 +5,7 @@ void setup()
 	size(1200,800,P3D);
 	noFill();
 	smooth(8);
+	strokeWeight(12);
 	for(int i = 0; i < 10; i++)
 	{
 		t.link(new string(null,random(240,260),random(240,260),false));
