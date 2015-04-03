@@ -5,7 +5,7 @@ float rectw = 50;
 boolean p = true;
 void setup() 
 {
-	size(1200,800,P2D);
+	size(300,300,P2D);
 	smooth(8);
 	rectMode(CENTER);
 	noStroke();
@@ -24,13 +24,14 @@ void draw()
 		pushMatrix();
 		fill(i/num * 100, 170, 170);
 		rotate(i*2.39996 * sin(k)/5);
-		rect(0,0,rectw,(num - i) * 4 * sin(k));
+		rect(0,0,rectw,(num - i) * 3 * sin(k));
 		popMatrix();
 	}
-	if(degrees(k) < 360)
-		saveFrame();
-	else {
-		System.exit(0);
+	if(degrees(k) < 180){
+		//saveFrame("###.gif");
+	}
+	else{
+		//System.exit(0);
 	}
 	k += radians(1);
 }

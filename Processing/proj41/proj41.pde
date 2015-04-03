@@ -13,6 +13,7 @@ void setup() {
 	size(500,500,OPENGL);
 	smooth(8);
 	colorMode(HSB);
+	strokeWeight(10);
 }
 
 void draw() {
@@ -21,7 +22,7 @@ void draw() {
 	noFill();
 	for(int i = 0; i <= maxi; i++)
 	{	
-		fill(i/maxi * 255, 200, 200);
+		//fill(i/maxi * 255, 200, 200);
 		beginShape();
 		curveVertex(0,0);
 		int k = 0;
@@ -56,6 +57,11 @@ void draw() {
 		//line(r * cos(i/20f * TAU - radians(off)), r * sin(i/20f * TAU - radians(off)),r/1.2 * cos(i/20f * TAU - radians(2 * off)), r/1.2 * sin(i/20f * TAU - radians(2 * off)));
 	}	
 	*/
+	off += 1;
+	if(off < 360)
+		saveFrame("###.gif");
+	else
+		exit();
 	f = (r + s)/2;
 }
 void keyPressed()

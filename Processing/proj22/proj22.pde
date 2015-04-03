@@ -3,7 +3,7 @@ GOOGLE GLASS SPHERE SKETCH
 */
 float t = 0;
 void setup() {
-	size(640,360,P3D);
+	size(500,500,P3D);
 	sphereDetail(15);
 }
 float x = 0;
@@ -20,13 +20,16 @@ void draw() {
 	rotateY(radians(-x));
 	rotate (PI/2 - radians(y), sin(PI/2-radians(-x)), 0, cos(PI/2-radians(-x)));
 	sphere(1000);
-	t += .001;
+	t += .01;
 	//rotate (radians(x), 0, cos(radians(x)), sin(radians(x)));
 	//drawGrid();
 	//rotate(radians(x), 0, 1, sin(radians(y))); //ROTATE Y by a
 	//rotate (radians(z), );
 	//sphere(1000);
 	//text(x + "\n" + y + "\n" + z, 50,50);
+	saveFrame("###.gif");
+	if(frameCount >= 150)
+		exit();
 }
 
 void drawGrid()

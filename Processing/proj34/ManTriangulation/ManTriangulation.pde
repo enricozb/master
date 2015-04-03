@@ -8,12 +8,12 @@ int NUM_POINTS = 0;
 ArrayList<Point> points = new ArrayList<Point>();
 ArrayList<Triangle> triangles = new ArrayList<Triangle>();
 
-PImage photo = loadImage("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/temp.jpg");
+PImage photo = loadImage("/Users/Enrico/Documents/SublimeFiles/master/Processing/proj34/Triangulation/data/temp.jpg");
 
 void setup() {
 	size(photo.width/2,photo.height/2,OPENGL);
 	minim = new Minim(this);
-	sound = minim.loadFile("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/done.wav");
+	//sound = minim.loadFile("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/done.wav");
 	smooth(8);
 	//noStroke();
 }

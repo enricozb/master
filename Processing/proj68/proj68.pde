@@ -5,7 +5,7 @@ color c_rays = color(213,93,64);
 color c_cloud = color(72 + 100,65 + 100,75 + 100);
 
 void setup() {
-	size(800,500,OPENGL);
+	size(300,300,OPENGL);
 	noStroke();
 	smooth(8);
 }

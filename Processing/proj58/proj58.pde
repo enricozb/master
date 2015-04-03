@@ -41,10 +41,14 @@ boolean isNumber(String s) {
 	return true;
 }
 
+boolean saving = false;
+
 void keyPressed() {
 	if(key == 'p') {
 		paused = !paused;
 	}
+	if(key == 'c')
+		saving = true;
 }
 
 void setup() {
@@ -60,6 +64,8 @@ void draw() {
 		stepWorld();
 	}
 	drawWorld();
+	if(saving && frameCount % 2 == 0) 
+		saveFrame("###.gif");
 	t += .01;
 }
 

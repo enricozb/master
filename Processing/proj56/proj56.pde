@@ -6,7 +6,7 @@ float tf = .1;
 
 //float t = -10;
 void setup() {
-	size(1200,800,OPENGL);
+	size(400,400,OPENGL);
 	smooth(8);
 	stroke(255);
 	strokeWeight(4);
@@ -16,11 +16,11 @@ void setup() {
 }
 
 void draw() {
-	background(200);
+	background(35);
 	translate(width/2,height/2);
 	for(float t = -200; t < 200; t+=tf)
 	{
-		stroke(map(t,-200,200,0,255),200,200);
+		stroke(map(t,-70,70,0,255),200,200);
 		beginShape();
 		curveVertex(x(t),y(t));
 		curveVertex(x(t),y(t));
@@ -28,9 +28,12 @@ void draw() {
 		curveVertex(x(t+tf),y(t+tf));		
 		endShape();
 	}
-	ts += radians(50);
-	if(frameCount == 1)
-		saveFrame("####.jpg");
+	//println(frameCount);
+	ts += radians(30);
+	if(frameCount == 80)
+		exit();
+
+	saveFrame("####.jpg");
 }
 
 void point(float x, float y, float z)

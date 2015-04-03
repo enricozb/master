@@ -4,13 +4,13 @@ float t = 0;
 
 float rx, ry, rz;
 
-int w = 2;
-int h = 2;
+int w = 10;
+int h = 10;
 
 Capture cam;
 
 void setup() {
-	size(800, 800, OPENGL);
+	size(500, 500, OPENGL);
 	noStroke();
 	for(String s : Capture.list())
 		println(s);
@@ -19,6 +19,8 @@ void setup() {
 	cam.start();     
 }
 
+boolean take = false;
+int off;
 void draw() {
 	background(35);
 	translate(width/2,height/2);
@@ -27,7 +29,8 @@ void draw() {
 		cam.read();
 	paint(cam);
 	t += .01;
-
+	if(take)
+		saveFrame("###.gif");
 }
 
 void rotateField() {
@@ -41,12 +44,19 @@ void rotateField() {
 	rotateZ(rz);
 }
 
+void keyPressed() {
+	if (key == 'e')
+		off++;
+	else
+		take = true;
+}
+
 void paint(PImage p) {
 	for(int i = 0; i < p.width; i+=w){
 		for(int j = 0; j < p.height; j+=h){
 			int g = getGray(p.get(i,j));
 			pushMatrix();
-			translate(i-p.width/2,j-p.height/2,map(g,0,255,0,200));
+			translate(i-p.width/2,j-p.height/2 + off,map(g,0,255,0,200));
 			fill(p.get(i,j));
 			box(w,h,w);
 			popMatrix();

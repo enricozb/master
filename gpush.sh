@@ -2,9 +2,9 @@
 
 project="$1"
 
-while [ "$project" != "master" ] && [ "$project" != "onePISD" ] && [ "$project" != "transient" ]
+while [ "$project" != "master" ] && [ "$project" != "onePISD" ] && [ "$project" != "transient" ] && [ "$project" != "here" ]
 do
-	echo -n "	Select project (master, onePISD, transient): "
+	echo -n "	Select project (master, onePISD, transient) or push in current directory (here): "
 	read project
 done
 

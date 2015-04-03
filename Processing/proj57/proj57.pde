@@ -7,13 +7,13 @@ int count = 0;
 float t = 0;
 
 void setup() {
-	size(800,800,OPENGL);
+	size(400,400,OPENGL);
 	smooth(8);
 	sphereDetail(5);
 	N = 50;
 	S = 8;
 	board = new boolean[N][N][N];
-	randomize(board, .17);
+	randomize(board, .13);
 }
 
 void draw() {
@@ -23,6 +23,7 @@ void draw() {
 	updateBoard(board);
 	drawBoard(board);
 	t+=.01;
+	saveFrame("###.gif");
 }
 
 void keyPressed() {
@@ -64,7 +65,7 @@ void updateBoard(boolean[][][] b) {
 		for(int j = 0; j < b[i].length; j++) {
 			for(int k = 0; k < b[i][j].length; k++) {
 				int n = getNumNext(b,i,j,k);
-				if((!b[i][j][k] && n == 5 || n == 7 || n == 16) || (b[i][j][k] && n == 7)) {
+				if((!b[i][j][k] && n == 13 || n == 6 || n == 8 ) || (b[i][j][k] && n == 7)) {
 					tb[i][j][k] = true;
 					count++;
 				}

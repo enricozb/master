@@ -3,7 +3,7 @@ ArrayList<float[]> clicks = new ArrayList<float[]>();
 int num = 50;
 
 void setup() {
-	size(1200,800,OPENGL);
+	size(400,400,OPENGL);
 	smooth(8);
 	ellipseMode(CORNER);
 	noStroke();
@@ -19,7 +19,7 @@ void draw() {
 			for(int i = 0; i < clicks.size(); i++)
 			{
 				float d = dist(xi,yi,clicks.get(i)[0],clicks.get(i)[1]);
-				float t = clicks.get(i)[2] += .01;
+				float t = clicks.get(i)[2] += .001;
 				val += getVal(d,t);
 				if(t > 2000)
 				{
@@ -30,11 +30,12 @@ void draw() {
 			fill(val);
 			rect(xi,yi,width/num,height/num);
 		}
+	saveFrame("###.gif");
 }
 
 void mousePressed()
 {
-	clicks.add(new float[]{mouseX,mouseY,0});
+	clicks.add(new float[]{width/2 + .1,height/2 + .1,0});
 }
 
 float getVal(float d, float t)

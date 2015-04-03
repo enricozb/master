@@ -2,7 +2,7 @@ float time = 0;
 float rate = radians(2);
 
 void setup() {
-	size(1200,800,OPENGL);
+	size(400,400,OPENGL);
 	noStroke();
 	colorMode(HSB);
 	sphereDetail(12);
@@ -21,11 +21,11 @@ void draw() {
 	time += rate;
 	if(time <= radians(360))
 	{
-		//saveFrame("###.jpg");
+		saveFrame("###.jpg");
 	}
 	else
 	{
-		//exit();
+		exit();
 	}
 }
 
