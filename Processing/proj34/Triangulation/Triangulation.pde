@@ -8,14 +8,14 @@ int NUM_POINTS = 300;
 ArrayList<Point> points = new ArrayList<Point>();
 ArrayList<Triangle> triangles = new ArrayList<Triangle>();
 
-PImage photo = loadImage("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/happy.jpg");
+PImage photo = loadImage("/Users/Enrico/Pictures/aphex-twin-syro_article_story_large.jpg");
 
 boolean save = false;
 
 void setup() {
 	size(photo.width,photo.height,OPENGL);
 	minim = new Minim(this);
-	sound = minim.loadFile("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/done.wav");
+	//sound = minim.loadFile("/Users/Enrico/Documents/SublimeFiles/Processing/proj34/Triangulation/data/done.wav");
 	smooth(8);
 	noStroke();
 	initPoints();

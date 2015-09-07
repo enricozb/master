@@ -24,7 +24,7 @@ void draw() {
 	time += .07;
 	if(time >= TAU)
 		exit();
-	saveFrame("###.gif");
+	//saveFrame("###.gif");
 
 }
 

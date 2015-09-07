@@ -1,7 +1,5 @@
 import processing.video.*;
 
-float t = 0;
-
 float rx, ry, rz;
 
 int w = 10;
@@ -12,7 +10,7 @@ Capture cam;
 void setup() {
 	size(800, 800, OPENGL);
 	noStroke();
-	ortho();
+	//ortho();
 	for(String s : Capture.list())
 		println(s);
 
@@ -26,11 +24,9 @@ void draw() {
 	if(cam.available())
 		cam.read();
 	image(cam, width/4, height/4,178,100);
-	rotateX(PI/2);
+	//rotateX(PI/2);
 	rotateField();
 	paint(cam);
-	t += .01;
-
 }
 
 void rotateField() {

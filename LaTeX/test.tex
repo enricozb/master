@@ -1,0 +1,36 @@
+\documentclass[landscape, 12pt]{report}
+\usepackage{amsmath}
+%\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+\begin{document}
+\everymath{\displaystyle}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\mathopen|}{\mathclose|}%
+
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+
+
+$
+	\sum\limits_{i=0}^{
+		\displaystyle \ceil{\log({							%J(x)
+			{{10}^{ \ceil*{\log(x + 1)}} + 
+			{
+				\Bigg[ \sum_{j=0}^{\ceil* {\log(x + 1)}}{ 	%vj(x)
+					{
+						( 10 ^ {j} \cdot 2 ^ {\ceil*{\big\vert{\big(\floor*{\frac{x}{10^j}} \Mod 10\big) - \big(\floor*{\frac{x}{10^{j+1}}} \Mod 10\big)}\big\vert}} { \Mod {2} } )	%eq(dat(x,10,j),dat(x,10,j+1))
+					} \Bigg] \cdot {10}
+				}
+			}
+		}
+	} + 2)} - 2}
+	{
+		n %dat(J(x), 10, i) * ((ir(J(x), i + 1) - i) * 10 ^ (2 * c(J(x), i) + 1) + dat(x, 10, i) * 10 ^ (2 * c(J(x), i))) //mercy
+	}
+$
+\end{document}

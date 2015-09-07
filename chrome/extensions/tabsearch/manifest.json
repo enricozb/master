@@ -1,0 +1,35 @@
+{
+    "manifest_version" : 2,
+    "name"             : "Tab Search",
+    "version"          : "0.2.5",
+
+    "description"      : "Pretty swank if you ask me.",
+
+    "icons" : {
+        "64" : "icon.png"
+    },
+
+    "browser_action"   : {
+        "default_icon"  : "icon.png",
+        "default_title" : "Tab Search",
+        "default_popup" : "popup.html"
+    },
+
+    "background" : {
+        "scripts" : ["tabsearch.js"]
+    },
+
+    "content_scripts" : [
+        {
+            "matches" : ["<all_urls>"],
+            "js" : ["lib/mousetrap.js", "lib/jquery.js", "hud/hud_css.js", "hud/hud_init.js", "hud/hud_tabs.js", "hud/hud_funcs.js", "hud/hud_div.js", "hud/hud.js"]
+        }
+    ],
+
+    "permissions": [
+        "tabs",
+        "<all_urls>"
+    ],
+
+    "web_accessible_resources": ["images/*.png"]
+}

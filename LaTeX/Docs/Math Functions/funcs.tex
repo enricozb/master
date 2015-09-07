@@ -1,0 +1,369 @@
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{tabu}
+\usepackage{mathtools}
+\pagestyle{plain}
+\everymath{\displaystyle} 
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\providecommand{\bfloor}[1]{\biggl \lfloor #1 \biggr \rfloor }
+\providecommand{\bceil}[1]{\Bigl \lceil #1 \Bigr \rceil }
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclareMathOperator{\sign}{sign}
+
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\x}{\times}
+\newcommand{\m}{\rightarrow}
+
+% -------------- TODO --------------
+% -	Check _ALL_ equations for validity and different base behavior
+% -	Finish
+%	-	Descriptions for _ALL_ branches.
+% 	-	First Branch
+%	-	Prime checker, Factorization
+% -	Add
+%	-	Boolean Algebra 'pre Foundation'
+% 	-	Draw
+%	-	Number digits for floats.
+% - Attempt to fix 'Missing }' error
+
+\title{Math Functions}
+
+\author{Sriram G. Bhat, Enrico Z. Borba, \& Michael K. Opara}
+
+\begin{document}
+
+	\begin{abstract}
+		These functions were discovered as they were needed, to feed the satisfaction of curious individuals with an interest in mathematics and computer science. The first function of this  nature to be discovered was $min(x, y)$ and was sufficient to create an interest in discovering functions of a similar kind. As more fundamental functions were discovered, such as $eq(x, y)$, more complex functions could be developed. Functions such as Look and Say's $L(x)$ and $sort(x)$ were quickly described and are proof of the powerful and useful nature of these fundamental functions.
+	\end{abstract}
+	\maketitle
+
+	\pagebreak
+
+	\tabulinesep=1.2mm
+	
+	\section*{0. Boolean Operations}
+
+		\noindent\makebox[\textwidth]{
+			\begin{tabu} 
+			{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{2cm} | >{\centering\arraybackslash}m{8cm} | m{4.6cm} |}
+			
+			\hline
+
+			Boolean Set			& $\B$				& $\left\{0, 1\right\}$					& The set of all possible boolean values
+			\\\hline
+
+			AND 				& $and(x, y):
+								\B\x\B\m\B$			& $x \cdot y$							& Returns 1 if $x = y = 1$, 0 otherwise. 
+			\\\hline
+
+			OR 					& $or(x, y):
+								\B\x\B\m\B$			& $\bceil{\frac{x + y}{2}}$				& Returns 1 if $x = 1, y = 1$ or both. 0 otherwise.								
+			\\\hline
+
+			NOT 				& \shortstack{
+								$not(x):$ \\  
+								$\B\m\B$}			& $1 - x$								& Returns 0 if $x = 1$, 1 otherwise.
+			\\\hline
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Foundation}
+
+		\noindent\makebox[\textwidth]{
+			\begin{tabu} 
+			{| >{\centering\arraybackslash}m{2.5cm} | >{\centering\arraybackslash}m{2cm} | >{\centering\arraybackslash}m{8cm} | m{4.6cm} |}
+			
+			\hline
+
+			Floor$^*$ 				& $\floor{x}:
+									\R\m\Z$		 		& $x - x \Mod 1$									& Definition of floor.
+ 			\\\hline
+
+ 			Ceiling$^*$ 			& $\ceil{x}:
+ 									\R\m\Z$				& $x + (-x \Mod 1)$									& Definition of ceiling.
+ 			\\\hline
+
+			Minimum  				& $min(x, y):
+									\R\x\R\m\R$ 		& $\frac{x + y}{2} - \frac{|x - y|}{2}$ 			& Returns the lesser of $x$ and $y$.
+			\\\hline
+			
+			Maximum  				& $max(x, y):
+									\R\x\R\m\R$ 		& $\frac{x + y}{2} + \frac{|x - y|}{2}$ 			& Returns the larger of $x$ and $y$.
+			\\\hline
+
+			Equality 				& $eq(x, y): 
+									\R\x\R\m\B$ 		& $2^{\ceil*{\abs{x - y}}} \Mod 2$ 					& Returns 1 if $x$ and $y$ are equal, 0 otherwise.
+			\\\hline
+
+			Signum$^*$				& $sign(x):
+									\R\m\Z$				& $\floor*{\frac{x}{\abs{x} + 1}} 
+														+ \ceil*{\frac{x}{\abs{x} + 1}}$ 					& Returns the sign of $x$. -1 if it's negative, 1 if it's 
+																											positive, 0 otherwise. Is always defined.
+			\\\hline
+
+			Digit At 				& $dat(x, b, i): 
+									\R\x\N\x\Z\m\N$ 	& $\bfloor{\frac{\abs{x}}{b^i}} \Mod b$ 			& Returns the digit at index $i$ of number $x$ in base $b$. 
+			\\\hline
+
+			Number of Digits 		& $nd(x, b):
+									\N\x\N\m\N$ 		& $\bceil{\log_{b}{(x + 1)}}$ 						& Returns the number of digits of $x$ in base $b$.
+			\\\hline
+
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{First Branch}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+			
+			\hline
+
+			Equality 					& $eq(x, y): 
+										\R\x\R\m\B$ 		& $1 - \ceil*{ \frac{\abs{x - y}}{\abs{x - y} + 1}}$ 			& Returns 1 if $x$ and $y$ are equal, 0 otherwise.	
+			\\\hline
+
+			Equality 					& $eq(x, y): 
+										\R\x\R\m\B$ 		& $1 -\abs{sign(x - y)}$ 										& Returns 1 if $x$ and $y$ are equal, 0 otherwise.
+			\\\hline
+
+			Compare						& $com(x, y):
+										\R\x\R\m\Z$			& $sign(x - y)$													& Returns 1 if $x > y$, 0 if $x = y$, and -1 if $x < y$.
+			\\\hline
+
+			Less Than					& $lt(x, y):
+										\R\x\R\m\B$			& $eq(-1, com(x, y))$										& Returns 1 if $x < y$, 0 otherwise.
+			\\\hline
+
+			Greater Than				& $gt(x, y):
+										\R\x\R\m\B$			& $eq(1, com(x, y))$										& Returns 1 if $x > y$, 0 otherwise.
+			\\\hline
+
+			Less Than or Equal To		& $le(x, y):
+										\R\x\R\m\B$			& $eq(min(x, y), x)$										& Returns 1 if $x \leq y$, 0 otherwise.
+			\\\hline
+
+			Greater Than or Equal To	& $ge(x, y):
+										\R\x\R\m\B$ 		& $eq(max(x, y), x)$										& Returns 1 if $x \geq y$, 0 otherwise.
+			\\\hline
+
+			Sum Digits					& $sd(x, b):
+										\N\x\N\m\N$			& $\sum_{i = 0}^{nd(x, b) - 1}{dat(x, b, i)}$				& Returns the sum of the digits in $x$ in base $b$.
+			\\\hline
+
+			To Base						& $tb(x, b):
+										\N\x\N\m\N$			& $\sum_{i = 0}^{nd(x, b) - 1}{dat(x, b, i) \cdot 10^i}$	& Returns a base 10 representation of the base $b$ representation of 
+																														$x$. 
+			\\\hline
+
+			Signum   					& $sign(x):
+										\R\m\Z$ 			& $\frac{\abs{x}}{x + eq(x, 0)}$ 							& Returns the sign of $x$. -1 if it's negative, 1 if it's positive, 0 
+																														otherwise. Is always defined.
+			\\\hline
+
+			Reverse						& $rev(x, b):
+										\N\x\N\m\N$			& $\sum_{i = 0}^{nd(x, b) - 1}{dat(x, b, i) \cdot 
+															10^{nd(x, b) - i - 1}}$										& Returns the reverse of the number $x$ in base $b$.
+			\\\hline
+
+			Whole Number 			& \shortstack{
+									$w(x):$
+									\\$\R\m\B$}				& $\floor{\cos(\pi x)^2}$									& Returns 1 if $x$ is whole, $x\in\Z$, 0 otherwise.
+			\\\hline
+
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Look and Say}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+			
+			\hline
+			Look and Say Counter		& $C_\lambda(x, i):
+										\N\x\N\m\N$			& $sd(x \Mod 10^i, 10)$											& Returns the sum of the digits of $x$ given a maximum left 
+																															index $i$.
+			\\\hline
+
+			Unpadded Difference			& $\delta(x):
+										\N\m\N$				& $\sum_{i = 0}^{nd(x, 10) - 2}{10^i \cdot 
+																	(1 - eq(dat(x, 10, i), dat(x, 10, i + 1)))}$ 			& Returns the differences of digits of $x$. 
+			\\\hline
+
+			Padded Difference 			& \shortstack{
+										$\Delta(x):$ \\
+										$\N\m\N$}			& $10^{nd(x, 10)} + 10 \cdot \delta(x) + 1$ 					& Returns the padded digit differences of $x$.
+			\\\hline
+
+			Leftmost Index 				& $il(x, i):
+										\N\x\Z\m\Z$			& $nd(x \Mod 10^{i + 1}, 10) - 1$								& Returns the leftmost index of a non-zero digit within $x$,
+																															given a left starting index of $i$.
+			\\\hline
+
+			Rightmost Index 			& $ir(x, i):
+										\N\x\Z\m\Z$			& $nd(x, 10) - nd\Bigg(rev\bigg(\bfloor{
+																	\frac{x}{10^{i + 1}}}, 10\bigg), 10\Bigg)$ 				& Returns the rightmost index of a non-zero digit within $x$, given a 
+																															right starting index of $i$.
+			\\\hline
+
+			Look and Say				& \shortstack{
+										$L(x):$ \\ 
+										$\N\m\N$}			& $\begin{aligned} \sum_{i = 0}^
+																{nd\big(\Delta(x), 10\big) - 2}{ 
+															&\Bigg(dat\big(\Delta(x), 10, i\big) 
+																\cdot \bigg(\Big(ir\big(\Delta(x), i\big) - i\Big) 		\\
+															&\cdot 10^{1 + 2 
+																\cdot C_\lambda\big(\Delta(x), i\big)} + dat(x, b, i) 	\\
+															&\cdot 10^{2\cdot C_\lambda\big(\Delta(x), i\big)}
+																\bigg)\Bigg)} 
+															\end{aligned}$						
+																															& Returns the following term in John Conway's Look and Say sequence 
+																															given a term $x$.
+			\\\hline
+
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Sorting}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+
+			Counter			& $C_\sigma(x, n, j)$	& $\sum_{i = 0}^{nd(x, 10) - 1}{eq(-1, com(n, dat(x, 10, i)))} 
+													+ \sum_{i = 0}^{j - 1}{eq(n, dat(x, 10, i))}$ 							& Returns the number of digits less than $n$ within $x$ and
+																															the number of occurences of digit $n$ with an index less 
+																															than $j$. Used to determine the index of the current digit
+																															when sorted.
+			\\\hline
+
+			Sort			& $sort(x)$				& $\begin{aligned}\sum_{i = 0}^{nd(x, 10) - 1}{
+													&\Big(dat(x, 10, i) \\
+													&\cdot 10^{nd(x, 10) - 1 - C_\sigma(x, dat(x, 10, i), i)
+														}\Big)}
+													\end{aligned}$															& Returns the sorted digits of $x$.
+			\\\hline
+
+			Counter 
+			(Vector)		& $C_\sigma(A, n, j)$	& $\sum_{i=1}^{n}{lt(A_j, A_i)} + \sum_{i=1}^{j}{eq(A_j, A_i)}$			& Returns the index of the element at index $j$ in vector
+																															$A$ of size $n$ when in its respective sorted vector.																	
+			\\\hline
+
+			Sort 			& $A^S$					& $[A_{C_\sigma(A, n, i)}](i=1, ..., n)$								& Returns the sorted representation of vector $A$ of size
+																															$n$, in decreasing order.
+			\\\hline
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Primality}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+
+			Is Prime 				& $p(x)$		& $1 - eq(1, x) - eq\Bigg(0, \prod_{i = 2}^{\sqrt{x}}{(x \Mod i)}\Bigg)$	& Returns 1 if $x$ is prime, 0 otherwise.
+			\\\hline
+
+			Multiplicity			& $m(x, f)$		& $ir(tb(x, f), - 1)$														& Returns the multiplicity of the factor $f$ of $x$.
+			\\\hline
+
+			Prime Factorization		& $P(x)$		& $\sum_{i = 2}^{x}{p(i) \cdot m(x, i) \cdot 10^i}$							& Returns the prime factorization of $x$ in the form 
+																																of a base 10 number with its digits' indices as the
+																																factors and the value of the digits as their
+																																multiplicities.	
+			\\\hline
+			\end{tabu}
+		}
+	\pagebreak
+	
+	\section{Rendering}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+
+			Render 					& $ren(x, y, d, h)$		& $dat\Bigg(\floor*{\frac{y + d \cdot h}{h}}, 
+																2, x \cdot h + y \Mod h\Bigg) > 0$								& Renders the monochromatic image encoded in
+																																$d$ of height $h$ at cornered at $(0, 0)$ when
+																																plotted against the $xy$-plane.
+			\\\hline
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Analysis}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+			Dirac Delta  			& $\delta_0(x)$			& $\lim_{a \to 0} \frac{1}{a\sqrt{\pi}}e^{-x^2/a^2}$ 				& The Dirac Delta function is special in that it
+																																is 0 everywhere except at $x = 0$, where it is $\infty$.
+																																Its integral over the real line is equal to 1.
+			\\\hline
+
+			Dirac Delta Comb
+			of Period Zero 			& $\textrm{III}_0(x)$	& $\lim_{T \to 0} \sum_{k = -\infty}^{\infty}\delta_0(x - kT)$		& The Dirac Delta comb with a period of zero can be thought
+																																of as a function similar to the Dirac Delta function with its
+																																spike at all real values of $x$. If certain points of the comb can be isolated, then the integral of said isolation can result in
+																																useful integer values.
+			\\\hline
+
+			Unapply Size			& $u(f, y_0)$			& $\int_{-\infty}^{\infty}eq(f(x), y_0) 
+															\cdot \textrm{III}_0(x)dx$ 											& Returns the number real $x$-values such that $f(x) = y_0$.
+			\\\hline	
+
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{Sets}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+
+			Prime Numbers			& $\mathbb{P}$			& $\left\{x \mid x \in \N \land p(x) = 1\right\}$					& The set of all prime numbers		
+			\\\hline
+
+			Prime Factors 			& $\mathbb{P}_a$		& $\left\{x \mid x, a \in \N \land 
+															2 \leq x \leq a \land p(x)\cdot m(a, x) > 0 \right\}$				& The set of the prime factors
+																																of $a$.
+			\\\hline	
+
+			\end{tabu}
+		}
+	\pagebreak
+
+	\section{The Ruler Function}
+		\noindent\makebox[\textwidth]{
+			\begin{tabu}
+			{|>{\centering\arraybackslash}m{2.5cm}|>{\centering\arraybackslash}m{2cm}|>{\centering\arraybackslash}m{8cm}| m{4.6cm} |}
+
+			\hline
+
+			The Ruler Function		& $r(x)$			& $\sum_{i=0}^{\ceil*{\log_2(x + 1)}}
+														{i\cdot eq(x\Mod 2^{i+1}, 2^i-1)}$ 			              	& Returns the value of the ruler function 
+																													corresponding to index $x$; the minum value is $0$. 		
+			\\\hline
+
+			\end{tabu}
+		}
+	\pagebreak
+\end{document}

@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+
+\begin{document}
+
+\begin{align*}
+F(x, b) &= \prod_{i=2}^{b}{\prod_{j=0}^{\ceil*{\log_b(x+1)}}{\ceil*{\frac{eq(dat(x, b, j), 1) + eq(dat(x, b, j), 0)}{2}}}}\\
+1 &= \prod_{i=2}^{6}{\prod_{j=0}^{\ceil*{\log_6(x+1)}}{\ceil*{\frac{eq(dat(x, 6, j), 1) + eq(dat(x, 6, j), 0)}{2}}}}\\
+\end{align*}
+
+\end{document}

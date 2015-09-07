@@ -1,0 +1,29 @@
+{
+	"manifest_version" 	: 2,
+	"name" 				: "Tab Search - Popup",
+	"version"			: "0.1",
+
+	"description"		: "Search through open tabs and more.",
+
+	"icons" : {
+		"64": "images/icon.png"
+	},
+
+	"browser_action" : {
+		"default_icon" 	: "images/icon.png",
+		"default_popup"	: "html/hud.html"
+	},
+
+	"permissions" : [
+		"tabs"
+	],
+
+	"commands" : {
+		"_execute_browser_action": {
+			"suggested_key" : {
+				"windows" 	: "Ctrl+I",
+				"mac"		: "MacCtrl+I"
+			}
+		}
+	}
+}

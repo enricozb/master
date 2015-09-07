@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\everymath{\displaystyle}
+
+\begin{document}
+	\title{The Look-and-Say Function}
+	\author{Enrico Borba}
+	\date{May 2015}
+	\maketitle
+
+	\begin{abstract}
+		The Look-and-Say sequence was originally introduced and analyzed by John Conway. 
+		The sequence begins as follows:
+		\begin{center}
+		$1, 11, 21, 1211, 111221, 312211, 13112221, 1113213211...$
+		\end{center}
+		To generate a member of the sequence from the previous member, read 
+		the digits of the previous member, counting the number of digits in 
+		groups of the same digit. For example:
+		\begin{enumerate}
+			\item 1 is read off as ``one 1'' or 11.
+			\item 11 is read off as ``two 1s'' or 21.
+			\item 21 is read off as ``one 2, then one 1'' or 1211.
+			\item 1211 is read off as ``one 1, then one 2, then two 1s'' or 111221.
+		\end{enumerate}
+		This sequence has been extensively analyzed in terms of its properties, but no formal 
+		definition for a function which generates its terms has been developed.
+		Until now. Let us venture to where no man has gone before...
+	\end{abstract}
+	\clearpage
+	
+	\section{Introduction}
+	Before attempting to create a function which can generate the terms of the Look-and-Say
+	sequence, a more rigorous algorithmic method of arriving at the terms should be described.
+	
+	\subsection{Differences}
+		Some points of interest regarding the generation of a member of the sequence are the
+		differences found between the digits of the previous member which was used to generate it.
+		``Quantifying'' these differences would consist of creating a number whose digits could 
+		be used to represent a member of the sequence. For example, embedding ``comparisons'' in 
+		between each of the digits of a member such as $L_0 = 111221$ may look something like this:
+		\begin{center}
+		${1}_0{1}_0{1}_1{2}_0{2}_1{1}$
+		\end{center}
+		Here, a $0$ represents an ``equality'' in the two digits it resides between,
+		while a $1$ designates a ``difference''. Consequently, the number generated using this 
+		technique, called $\Delta_0$, would be
+		\begin{center}
+		$00101$\\
+		or\\
+		$101$
+		\end{center}
+		Now, it is important to preserve the leading $0$s as they have significant value in 
+		regards to the current member being used to generate $\Delta_0$. A simple way to preserve
+		these leading zeros would be to ``pad'' the resulting $\Delta_0$ with $1$s as such:
+		\begin{center}
+		$_1{1}_0{1}_0{1}_1{2}_0{2}_1{1}_1$
+		\end{center}
+		\begin{center}
+		$\Delta_0 = 1001011$
+		\end{center}
+		With $\Delta_0$, the differences between the digits of $L_0$ can be identified and used to 
+		generate the next member.
+
+		\subsection{Counting}
+		In between each instance of a $1$ in $\Delta_0$ are digits of the same kind within $L_0$. 
+		Put simply, the instances of $1$s in $\Delta_0$ can be used to separate $L_0$ into its 
+		``groups'' of digits. 
+		\begin{center}
+		$_1{1}_0{1}_0{1}_1{2}_0{2}_1{1}_1$\\
+		$_1{1}{1}{1}_1{2}{2}_1{1}_1$
+		\end{center}
+
+		\clearpage
+
+		\noindent For example, here are $L_0$ and $\Delta_0$ with their digits' indices labeled:
+		\begin{center}
+		$L_0 = 
+		\underset{5}{1}\underset{4}{1}\underset{3}{1}\underset{2}{2}\underset{1}{2}\underset{0}{1}
+		$
+		and
+		$\Delta_0 = 
+		\underset{6}{1}\underset{5}{0}\underset{4}{0}\underset{3}{1}\underset{2}{0}\underset{1}{1}
+		\underset{0}{1}
+		$
+		\end{center}
+		The first instance of a $1$ in $\Delta_0$ (starting from the right) occurs at index $0$.
+		\begin{center}
+		$\Delta_0 = 100101\underset{0}{1}$
+		\end{center}
+		The second instance of a $1$ occurs at index $1$.
+		\begin{center}
+		$\Delta_0 = 10010\underset{1}{1}1$
+		\end{center}
+		The difference in these indices is $1$. This indicates that these two $1$s surround a 
+		``group'' of digits only one digit long. In this case, these first two instances of $1$s 
+		``surround'' a $1$ in $L_0$ (placed in brackets for clarity).
+		\begin{center}
+		$_1{1}{1}{1}_1{2}{2}[_1{1}_1]$
+		\end{center}
+		The next pair of $1$s in $\Delta_0$ occur in indices $3$ and $1$.
+		\begin{center}
+		$\Delta_0 = 100\underset{3}{1}0\underset{1}{1}1$
+		\end{center}
+		This pair of $1$s correspond to the second group in $L_0$. These two indices have a 
+		difference of $2$ and therefore ``surround'' a ``group'' of digits in $L_0$ that is two 
+		digits long.
+		\begin{center}
+		$_1{1}{1}{1}[_1{2}{2}_1]{1}_1$
+		\end{center}
+		Carrying this forward to the final group of digits in $L_0$, the difference in indices is
+		$3$
+		\begin{center}
+		$\Delta_0 = \underset{6}{1}00\underset{3}{1}011$ 
+		\end{center}
+		Since this is the third pair of $1$s in $\Delta_0$, it corresponds to the third 
+		``group'' in $L_0$, which is composed of $1$s.
+		\begin{center}
+		$[_1{1}{1}{1}_1]{2}{2}_1{1}_1$
+		\end{center}
+		Appending each of these counts and digits in $L_0$ together, from right to left, generates 
+		the next member, $L_1$
+		\[
+			_1{1}{1}{1}_1{2}{2}[_1{1}_1] \tag*{one one}
+		\]
+		\[
+			_1{1}{1}{1}[_1{2}{2}_1]{1}_1 \tag*{two two}
+		\]
+		\[
+			[_1{1}{1}{1}_1]{2}{2}_1{1}_1 \tag*{three one}
+		\]
+		\[
+			L_1 = 312211
+		\]
+		\clearpage
+
+	\section{The Function}
+	Creating a function, $L(x)$, that generates a term, $L_{x + 1}$, given a previous term, $x$, 
+	would first involve creating the comparison function, $\Delta(x)$, which produces a 
+	corresponding $\Delta_x$. Then, by iterating through each pairs of $1$s within $\Delta_x$ and 
+	appending each digit of $L_x$ and its ``count'' together, the next term, $L_{x+1}$, can be 
+	produced.
+
+		\subsection{Writing $\Delta(x)$}
+		As previously explained, $\Delta(x)$ consists of appending comparisons for each pair of 
+		digits within $x$ and padding them with $1$s on the ends. Given that $q(x, y)$ is the 
+		equality function$^1$, and $d(x, i)$ is the digit-at function$^2$, a comparison at digit $i$
+		can be done as follows:
+
+		\begin{center}
+		$comp(x, i)$ = $q(d(x, i), d(x, i + 1))$
+		\end{center}
+
+		\noindent If digit $i$ and digit $i + 1$ in $x$ are equal, this comparison results in a $1$, 
+		otherwise, it evaluates to $0$. This is the reverse of what was described earlier, as the 
+		differences between the digits should result in $1$s, while the equalities should result 
+		in $0$s. Taking this into account:
+
+		\begin{center}
+		$comp(x, i)$ = $1 - q(d(x, i), d(x, i + 1))$
+		\end{center}
+
+		\noindent Now the comparisons are consistent with what was described earlier. In order to 
+		append these comparisons, it's important to realize that any number in base 10 can be 
+		written as the sum of its digits each multiplied by $10$ raised to that digit's index. For 
+		example:
+
+		\begin{center}
+		$15012 = 1 \cdot 10^{4} + 5 \cdot 10^{3} + 0 \cdot 10^{2} + 1 \cdot 10^{1} + 2 \cdot 10^{0}$
+		\end{center}
+
+		\noindent Applying this to the comparisons, and given that $n(x)$ is the number-of-digits 
+		function$^3$, the unpadded $\Delta_{x}$ can be calculated as follows:
+
+		\begin{center}
+		$\sum_{i = 0}^{n(x)} {comp(x, i) \cdot 10^i}$
+		\end{center}
+ 
+		% Creating $\Delta(x)$ consists of iterating through each pair of consecutive digits in $x$,
+		% and ``comparing'' them. Appending these ``comparisons'' in order of evaluation will yield 
+		% $\Delta_x$.	Each comparison consists of grabbing a digit of $x$ at index $i$ and comparing it
+		% with the digit at $i + 1$.
+
+		% \begin{center}
+		% $x = 1112\underset{1}{2}\underset{0}{1}$
+		% \end{center}
+
+		% \noindent Since, digits $0$ and $1$ of $x$ differ, the first digit of $\Delta_x$ must be 
+		% $1$ (this is without regards to the ``padding'' of $1$s). Given that $q(x, y)$ is the
+		% equality function$^1$, and $d(x, i)$ is the digit-at function$^2$ Any given ``comparison'' 
+		% for digit $i$ can be described by
+
+		% \begin{center}
+		% $q(d(x, i), d(x, i + 1))$
+		% \end{center} 
+
+		% \noindent Disregarding the ``padding'', for any given ``comparison'', the right-most index 
+		% at which the comparison occurs on $x$ will be the same index of the result of the 
+		% comparison on $\Delta_x$. For example, for the first comparison,
+
+		% \begin{center}
+		% $
+		% 	L(x) = \sum_{i = 0}^{n_10(\Delta(x)) - 2}{d(\Delta(x), i)\cdot((R(J(x), i) - i)\cdot{10} ^ {1 + 2c(J(x), i)} + d(x, i)\cdot{10} ^ {2c(J(x), i)})}
+		% $
+		% \end{center}
+
+\end{document}
