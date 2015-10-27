@@ -3,4 +3,6 @@ build-tmp/
 *.pyc
 *.class
 *.pdf
-#.gif
+*.gif
+*.png
+
