@@ -38,9 +38,9 @@ void draw() {
 
 	t = sin(tr)/20;
 	tr += .05;
-	saveFrame("###.gif");
-	if(tr >= TAU)
-		exit();
+	//saveFrame("###.gif");
+	//if(tr >= TAU)
+		//exit();
 }
 
 float getWidth(float x){

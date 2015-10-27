@@ -63,8 +63,9 @@ void keyPressed()
 
 	if(key == 'p')
 		paused = !paused;
-	if(key == 's')
-		saveFrame("####.njpg");
+	if(key == 's'){
+		//saveFrame("####.njpg");
+	}
 }
 
 class Particle
